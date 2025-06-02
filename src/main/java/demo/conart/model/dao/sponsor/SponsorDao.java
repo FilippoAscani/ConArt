@@ -1,4 +1,4 @@
-package demo.conart.model.dao;
+package demo.conart.model.dao.sponsor;
 
 import demo.conart.model.entity.Sponsor;
 

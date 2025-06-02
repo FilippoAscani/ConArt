@@ -37,6 +37,15 @@ public class HelloApplication {
         il main chiede db o csv
 
         il main lancia il controller pertinente e assegna il layer
+        impl dao in questo modo utente, artista e sposnsor
+        mi aspetto che tutti facciano login, tutti si registrino, tutti possano eliminare il profilo
+        aggiornare la password ma non il nome utente
+        sponsor vede lista di artisti
+        utente vede lista spettacoli
+        artista, sponsor e utente vedono lista recensioni
+
+        serve uno sia per csv sia per db
+        per il db serve anche effettuare la connessione tramite singleton
 
          */
 

@@ -8,7 +8,8 @@ public class User {
      *
      */
 
-    private int cf;
+    private int id;
+    private String cf;
     private String nome;
     private String cognome;
     private String email;
@@ -20,11 +21,11 @@ public class User {
     }
 
 
-    public int getCf() {
+    public String getCf() {
         return cf;
     }
 
-    public void setCf(int cf) {
+    public void setCf(String cf) {
         this.cf = cf;
     }
 
@@ -66,5 +67,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
