@@ -20,6 +20,7 @@ public class CliAuthController {
 
     public void inizio(){
         Scanner sc = new Scanner(System.in);
+
         while(true){
             cliControllerView.menu();
             String choice = sc.nextLine();
@@ -39,7 +40,10 @@ public class CliAuthController {
 
                 default:
                     System.out.println("scelta non valida");
+                    return;
             }
+
+
         }
 
     }

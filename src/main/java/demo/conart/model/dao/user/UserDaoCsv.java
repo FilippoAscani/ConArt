@@ -8,12 +8,16 @@ import java.util.ArrayList;
 public class UserDaoCsv implements UserDao {
 
 
+    private static final String FILENAME = "users.csv";
+
+
     @Override
     public ArrayList<User> getUsers() {
 
 
         ArrayList<User> users = new ArrayList<>();
-        try (BufferedReader br = new BufferedReader(new FileReader("users.csv"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(FILENAME))) {
+
             String line;
             br.readLine();
 
@@ -51,7 +55,7 @@ public class UserDaoCsv implements UserDao {
     @Override
     public User getUser(int id) {
 
-        try (BufferedReader br = new BufferedReader(new FileReader("users.csv"))){
+        try (BufferedReader br = new BufferedReader(new FileReader(FILENAME))){
 
             String line;
             br.readLine();
@@ -93,7 +97,7 @@ public class UserDaoCsv implements UserDao {
     @Override
     public boolean addUser(User user) {
 
-        try(BufferedWriter bw = new BufferedWriter(new FileWriter("users.csv",true ))) {
+        try(BufferedWriter bw = new BufferedWriter(new FileWriter(FILENAME,true ))) {
             String line = user.getUsername() + "," + user.getPassword();
             bw.newLine();
             bw.write(line);
@@ -122,7 +126,7 @@ public class UserDaoCsv implements UserDao {
     @Override
     public boolean updateUser(User user) {
 
-        File input = new File("users.csv");
+        File input = new File(FILENAME);
         File temp = new File("tempusers.csv");
 
         boolean updated = false;
@@ -177,7 +181,7 @@ public class UserDaoCsv implements UserDao {
     @Override
     public boolean deleteUser(int id) {
 
-        File input = new File("users.csv");
+        File input = new File(FILENAME);
         File temp = new File("tempusers.csv");
 
         boolean deleted = false;
@@ -214,4 +218,6 @@ public class UserDaoCsv implements UserDao {
 
         return false;
     }
+
+
 }

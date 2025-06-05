@@ -3,6 +3,7 @@ package demo.conart.view;
 import demo.conart.model.AuthService;
 
 import java.util.Scanner;
+import java.util.logging.Logger;
 
 public class CliLoginView {
 
@@ -13,6 +14,7 @@ public class CliLoginView {
      */
 
     private AuthService authService;
+    private Logger logger = Logger.getLogger(CliLoginView.class.getName());
 
     public CliLoginView(AuthService authService) {
         this.authService = authService;
@@ -21,17 +23,17 @@ public class CliLoginView {
     public void startLogin(){
         Scanner sc = new Scanner(System.in);
 
-        System.out.print("Enter username: ");
+        logger.info("Enter username: ");
         String username = sc.nextLine();
 
-        System.out.print("Enter password: ");
+        logger.info("Enter password: ");
         String password = sc.nextLine();
 
         if (authService.login(username, password)){
-            System.out.println("You are logged in!");
+            logger.info("You are logged in!");
         }
         else{
-            System.out.println("You are not logged in!");
+            logger.info("You are not logged in!");
         }
     }
 
