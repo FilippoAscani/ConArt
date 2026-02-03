@@ -1,6 +1,6 @@
 package demo.conart.model;
 
-import demo.conart.model.entity.User;
+import demo.conart.model.entity.Spectator;
 
 public class AuthService {
 
@@ -19,16 +19,16 @@ public class AuthService {
         if (repo.exists(email)){
             return false;
         }
-        User user = new User();
-        user.setUsername(email);
-        user.setPassword(password);
-        repo.save(user);
+        Spectator spectator = new Spectator();
+        spectator.setUsername(email);
+        spectator.setPassword(password);
+        repo.save(spectator);
         return true;
     }
 
     public boolean login(String email, String password) {
-        User user = repo.findByEmail(email);
-        return user != null && user.getPassword().equals(password);
+        Spectator spectator = repo.findByEmail(email);
+        return spectator != null && spectator.getPassword().equals(password);
     }
 
 

@@ -1,11 +1,12 @@
 package demo.conart.model;
 
-import demo.conart.model.entity.User;
+import demo.conart.model.entity.Spectator;
+
 
 public interface UserRepository {
 
     boolean exists(String email);
-    User findByEmail(String email);
-    void save(User user);
+    Spectator findByEmail(String email);
+    void save(Spectator user);
 
 }

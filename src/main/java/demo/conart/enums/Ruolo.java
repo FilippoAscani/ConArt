@@ -1,7 +1,7 @@
-package demo.conart.enumeration;
+package demo.conart.enums;
 
 public enum Ruolo {
-    USER,
+    SPECTATOR,
     ARTIST,
     SPONSOR
 }

@@ -11,9 +11,10 @@ public class Artist {
     private int id;
     private String username;
     private String password;
+    private String tipo;
 
     public Artist() {
-
+        //costruttore
     }
 
 
@@ -39,5 +40,13 @@ public class Artist {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 }

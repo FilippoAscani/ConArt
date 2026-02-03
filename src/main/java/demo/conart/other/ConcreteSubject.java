@@ -5,7 +5,7 @@ import java.util.List;
 
 public class ConcreteSubject implements Subject {
 
-    private List<Observer> observers = new ArrayList<Observer>();
+    private List<Observer> observers = new ArrayList<>();
     private String state;
 
     public void setState(String state) {
