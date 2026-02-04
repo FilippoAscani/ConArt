@@ -9,7 +9,7 @@ public class PersistenceFs implements PersistenceStrategy {
     private UserDao userDAO = new UserDaoCsv();
 
     @Override
-    public BeanLogin getUserDAO() {
+    public UserDao getUserDAO() {
         return userDAO;
     }
 
