@@ -28,7 +28,7 @@ import java.sql.SQLException;
 import java.util.Objects;
 
 
-public class ArtistRegisterController {
+public class GuiArtistRegisterController {
 
     @FXML
     private Button btnIndietroA;
@@ -60,7 +60,7 @@ public class ArtistRegisterController {
     @FXML
     private TextField usernameFieldA;
 
-    private static final Logger logger = LoggerFactory.getLogger(ArtistRegisterController.class);
+    private static final Logger logger = LoggerFactory.getLogger(GuiArtistRegisterController.class);
     private final SecureRandom rand = new SecureRandom();
 
     @FXML

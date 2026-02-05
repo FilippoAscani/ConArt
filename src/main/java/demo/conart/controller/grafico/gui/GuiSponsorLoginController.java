@@ -20,7 +20,7 @@ import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class SponsorLoginController implements Initializable {
+public class GuiSponsorLoginController implements Initializable {
 
     @FXML
     private Button btnIndietroS;
@@ -49,7 +49,7 @@ public class SponsorLoginController implements Initializable {
     @FXML
     private TextField usernameFieldS;
 
-    private static final Logger logger = LoggerFactory.getLogger(SponsorLoginController.class);
+    private static final Logger logger = LoggerFactory.getLogger(GuiSponsorLoginController.class);
 
     @FXML
     public void select() {

@@ -20,7 +20,7 @@ import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class UserLoginController implements Initializable {
+public class GuiUserLoginController implements Initializable {
 
     @FXML
     public Button btnIndietroU;
@@ -49,7 +49,7 @@ public class UserLoginController implements Initializable {
     private ComboBox<String>  combo1U;
 
 
-    private static final Logger logger = LoggerFactory.getLogger(UserLoginController.class);
+    private static final Logger logger = LoggerFactory.getLogger(GuiUserLoginController.class);
 
 
     public void select() {

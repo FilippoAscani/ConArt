@@ -26,7 +26,7 @@ import java.sql.Statement;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class UserSearchController implements Initializable {
+public class GuiUserSearchController implements Initializable {
 
     ObservableList<Show> spettacoliTrovati = FXCollections.observableArrayList();
     Statement statement = null;
@@ -49,7 +49,7 @@ public class UserSearchController implements Initializable {
     private TableView<Show> tabView;
 
 
-    private static final Logger logger = LoggerFactory.getLogger(UserSearchController.class);
+    private static final Logger logger = LoggerFactory.getLogger(GuiUserSearchController.class);
 
 
     public void handleCerca() {

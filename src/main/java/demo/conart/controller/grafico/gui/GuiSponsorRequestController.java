@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class SponsorRequestController {
+public class GuiSponsorRequestController {
 
     @FXML
     private Button btnCrea;
@@ -42,7 +42,7 @@ public class SponsorRequestController {
     private TextField txtTitolo;
 
 
-    private static final Logger logger = LoggerFactory.getLogger(SponsorRequestController.class);
+    private static final Logger logger = LoggerFactory.getLogger(GuiSponsorRequestController.class);
 
     @FXML
     void handleCrea(ActionEvent event) {

@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Objects;
 
-public class ArtistProfileController {
+public class GuiArtistProfileController {
 
     @FXML
     private Button btnElimina;

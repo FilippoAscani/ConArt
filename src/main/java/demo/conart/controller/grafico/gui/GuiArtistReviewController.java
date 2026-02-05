@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Objects;
 
-public class ArtistReviewController {
+public class GuiArtistReviewController {
 
     @FXML
     private Button btnCerca;

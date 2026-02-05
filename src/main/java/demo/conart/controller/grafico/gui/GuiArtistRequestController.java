@@ -27,7 +27,7 @@ import java.sql.Statement;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class ArtistRequestController  implements Initializable {
+public class GuiArtistRequestController implements Initializable {
 
     @FXML
     private Button btnCerca;
@@ -46,7 +46,7 @@ public class ArtistRequestController  implements Initializable {
 
 
 
-    private static final Logger logger = LoggerFactory.getLogger(ArtistRequestController.class);
+    private static final Logger logger = LoggerFactory.getLogger(GuiArtistRequestController.class);
 
     ObservableList<Request> richieste = FXCollections.observableArrayList();
 

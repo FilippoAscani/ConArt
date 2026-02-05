@@ -27,7 +27,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Objects;
 
-public class SponsorRegisterController {
+public class GuiSponsorRegisterController {
 
     @FXML
     private Button btnIndietro;
@@ -53,7 +53,7 @@ public class SponsorRegisterController {
     @FXML
     private PasswordField passwordField;
 
-    private static final Logger logger = LoggerFactory.getLogger(SponsorRegisterController.class);
+    private static final Logger logger = LoggerFactory.getLogger(GuiSponsorRegisterController.class);
 
     private final SecureRandom rand = new SecureRandom();
 

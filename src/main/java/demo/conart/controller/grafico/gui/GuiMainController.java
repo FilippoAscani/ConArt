@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Objects;
 
-public class MainController {
+public class GuiMainController {
 
     @FXML
     private Button btnArtist;

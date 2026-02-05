@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Objects;
 
-public class SponsorReviewController {
+public class GuiSponsorReviewController {
 
     @FXML
     private Button btnCerca;
