@@ -16,5 +16,5 @@ public interface SponsorDao {
     public boolean addSponsor(Sponsor sponsor);
     public boolean updateSponsor(Sponsor sponsor);
     public boolean deleteSponsor(int id);
-
+    public boolean exists(String username, String password);
 }

@@ -1,8 +1,6 @@
 package demo.conart.controller.grafico.gui;
 
-import com.example.progettomola.controllercli.Register;
-import com.example.progettomola.model.entity.Artist;
-import com.example.progettomola.model.entity.Request;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

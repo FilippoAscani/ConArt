@@ -1,14 +1,21 @@
 package demo.conart.controller.applicativo;
 
+import demo.conart.model.dao.request.RequestDaoCsv;
+import demo.conart.model.dao.show.ShowDaoCsv;
+import demo.conart.model.entity.Artist;
+import demo.conart.model.entity.Request;
+import demo.conart.model.entity.Show;
 import demo.conart.view.ArtistHomepageCliView;
+
+import java.util.List;
 
 public class ArtistHomepageController {
 
     private final ArtistHomepageCliView view;
-    private final RequestDAOImplCSV requestDAO = new RequestDAOImplCSV();
-    private final ShowDAOImplCSV showDAO = new ShowDAOImplCSV();
+    private final RequestDaoCsv requestDAO = new RequestDaoCsv();
+    private final ShowDaoCsv showDAO = new ShowDaoCsv();
 
-    public ArtistHomepageController(ArtistHomepageView view) {
+    public ArtistHomepageController(ArtistHomepageCliView view) {
         this.view = view;
     }
 

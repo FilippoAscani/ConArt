@@ -1,7 +1,7 @@
 package demo.conart.controller.grafico.gui;
 
-import com.example.progettomola.controllercli.CercaCSV;
-import com.example.progettomola.controllercli.CercaDB;
+
+import demo.conart.model.dao.spectator.SpectatorDao;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -19,8 +19,11 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
+import SpectatorDaoCsv
 
 public class GuiArtistLoginController implements Initializable {
+
+
 
     @FXML
     private Button btnIndietroA;
@@ -102,7 +105,9 @@ public class GuiArtistLoginController implements Initializable {
                 break;
 
             case "CSV":
-                if(CercaCSV.cercaArtist(username,password)){
+
+
+                if(exists(username,password)){
                     Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("artist-profile-view.fxml")));
                     Stage stage = (Stage) btnLoginA.getScene().getWindow();
                     stage.setScene(new Scene(root));

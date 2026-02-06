@@ -1,9 +1,6 @@
 package demo.conart.controller.grafico.gui;
 
-import com.example.progettomola.DatabaseConnection;
-import com.example.progettomola.controllercli.Register;
-import com.example.progettomola.exceptions.DBConnectionException;
-import com.example.progettomola.model.entity.User;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

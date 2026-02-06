@@ -1,10 +1,8 @@
 package demo.conart.controller.grafico.gui;
 
 
-import com.example.progettomola.DatabaseConnection;
-import com.example.progettomola.controllercli.Register;
-import com.example.progettomola.model.entity.Request;
-import com.example.progettomola.model.entity.Show;
+
+import demo.conart.other.DatabaseConnection;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;

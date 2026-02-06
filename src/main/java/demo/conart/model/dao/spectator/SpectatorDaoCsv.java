@@ -95,10 +95,10 @@ public class SpectatorDaoCsv implements SpectatorDao {
 
 
     @Override
-    public boolean addSpectator(Spectator Spectator) {
+    public boolean addSpectator(Spectator spectator) {
 
         try(BufferedWriter bw = new BufferedWriter(new FileWriter(FILENAME,true ))) {
-            String line = Spectator.getUsername() + "," + Spectator.getPassword();
+            String line = spectator.getUsername() + "," + spectator.getPassword();
             bw.newLine();
             bw.write(line);
             return true;
@@ -124,7 +124,7 @@ public class SpectatorDaoCsv implements SpectatorDao {
 
 
     @Override
-    public boolean updateSpectator(Spectator Spectator) {
+    public boolean updateSpectator(Spectator spectator) {
 
         File input = new File(FILENAME);
         File temp = new File("tempSpectators.csv");
@@ -142,7 +142,7 @@ public class SpectatorDaoCsv implements SpectatorDao {
                 String[] data = line.split(",");
                 int id = Integer.parseInt(data[0]);
 
-                if (id == Spectator.getId()) {
+                if (id == spectator.getId()) {
                     String updateLine = Spectator.getUsername() + "," + Spectator.getPassword();
                     bw.write(updateLine);
                     updated = true;
@@ -216,6 +216,24 @@ public class SpectatorDaoCsv implements SpectatorDao {
             return deleted;
         }
 
+        return false;
+    }
+
+
+    @Override
+    public boolean exists(String username, String password) {
+        try (BufferedReader br = new BufferedReader(new FileReader(FILENAME))) {
+            br.readLine(); // skip header
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] data = line.split(",");
+                if (data[0].equals(username) && data[1].equals(password)) {
+                    return true;
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace(); // o meglio logger
+        }
         return false;
     }
 

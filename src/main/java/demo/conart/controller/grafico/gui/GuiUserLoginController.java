@@ -1,8 +1,7 @@
 package demo.conart.controller.grafico.gui;
 
 
-import com.example.progettomola.controllercli.CercaCSV;
-import com.example.progettomola.controllercli.CercaDB;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;

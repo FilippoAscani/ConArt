@@ -215,4 +215,22 @@ public class SponsorDaoCsv implements SponsorDao {
         return false;
 
     }
+
+
+    @Override
+    public boolean exists(String username, String password) {
+        try (BufferedReader br = new BufferedReader(new FileReader(FILENAME))) {
+            br.readLine(); // skip header
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] data = line.split(",");
+                if (data[0].equals(username) && data[1].equals(password)) {
+                    return true;
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace(); // o meglio logger
+        }
+        return false;
+    }
 }

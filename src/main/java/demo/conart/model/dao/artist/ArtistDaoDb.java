@@ -16,7 +16,7 @@ public class ArtistDaoDb implements ArtistDao{
     @Override
     public ArrayList<Artist> getArtists() {
         ArrayList<Artist> artists = new ArrayList<>();
-        String sql = "select * from artist";
+        String sql = "select *" + " from artist";
 
         try(Connection conn = DatabaseConnection.getInstance().getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
@@ -40,7 +40,7 @@ public class ArtistDaoDb implements ArtistDao{
 
     @Override
     public Artist getArtist(int id) {
-        String sql = "select * from artist where id = ?";
+        String sql = "select *" + " from artist where id = ?";
 
         try(Connection conn = DatabaseConnection.getInstance().getConnection();
            PreparedStatement ps = conn.prepareStatement(sql)) {
@@ -142,6 +142,26 @@ public class ArtistDaoDb implements ArtistDao{
         }
 
         return false;
+    }
+
+
+    @Override
+    public boolean exists(String username, String password) {
+        String sql =  "SELECT 1 FROM Spectators WHERE username = ? AND password = ?";
+        try (Connection conn = DatabaseConnection.getInstance().getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setString(1, username);
+            ps.setString(2, password);
+
+            try (ResultSet rs = ps.executeQuery()) {
+                return rs.next();
+            }
+
+        } catch (SQLException | DBConnectionException e) {
+            logger.error("Error checking spectator existence", e);
+            return false;
+        }
     }
 
 

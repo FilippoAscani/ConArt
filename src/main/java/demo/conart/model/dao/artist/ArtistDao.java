@@ -11,6 +11,6 @@ public interface ArtistDao<T> {
     public boolean addArtist(Artist artist);
     public boolean updateArtist(Artist artist);
     public boolean deleteArtist(int id);
-
+    public boolean exists(String username, String password);
 
 }
