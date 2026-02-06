@@ -2,6 +2,7 @@ package demo.conart.controller.grafico.gui;
 
 
 
+import demo.conart.model.entity.Request;
 import demo.conart.other.DatabaseConnection;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

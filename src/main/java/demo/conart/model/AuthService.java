@@ -1,36 +1,23 @@
 package demo.conart.model;
 
+import demo.conart.model.dao.artist.ArtistDao;
+import demo.conart.model.dao.spectator.SpectatorDao;
+import demo.conart.model.dao.sponsor.SponsorDao;
 import demo.conart.model.entity.Spectator;
 
 public class AuthService {
 
-    /*
-    authservice si dovrebbe occupare dell'autenticazione login o registrazione senza sapere dove sono
-    inseriti i dati
-     */
+    private final ArtistDao artistDao;
+    private final SpectatorDao spectatorDao;
+    private final SponsorDao sponsorDao;
 
-    private UserRepository repo;
+    public AuthService(ArtistDao artistDao, SpectatorDao spectatorDao, SponsorDao sponsorDao) {
 
-    public AuthService(UserRepository repo) {
-        this.repo = repo;
+        this.artistDao = artistDao;
+        this.spectatorDao = spectatorDao;
+        this.sponsorDao = sponsorDao;
+
     }
-
-    public boolean register(String email, String password) {
-        if (repo.exists(email)){
-            return false;
-        }
-        Spectator spectator = new Spectator();
-        spectator.setUsername(email);
-        spectator.setPassword(password);
-        repo.save(spectator);
-        return true;
-    }
-
-    public boolean login(String email, String password) {
-        Spectator spectator = repo.findByEmail(email);
-        return spectator != null && spectator.getPassword().equals(password);
-    }
-
-
 
 }
+

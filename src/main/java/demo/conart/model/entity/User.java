@@ -1,11 +1,14 @@
 package demo.conart.model.entity;
 
-public class User {
+import demo.conart.enums.Ruolo;
+
+public abstract class User {
 
 
-    private int id;
-    private String username;
-    private String password;
+    protected int id;
+    protected String username;
+    protected String password;
+    protected Ruolo ruolo;
 
     public User(){
         //costruttore
@@ -34,4 +37,13 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public Ruolo getRuolo() {
+        return ruolo;
+    }
+
+    public void setRuolo(Ruolo ruolo) {
+        this.ruolo = ruolo;
+    }
+
 }
