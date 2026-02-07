@@ -2,7 +2,7 @@ package demo.conart.model.dao.sponsor;
 
 import demo.conart.model.entity.Sponsor;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public interface SponsorDao {
 
@@ -11,7 +11,7 @@ public interface SponsorDao {
      * metodi standard con arraylist e booleani definiti
      */
 
-    public ArrayList<Sponsor> getSponsors();
+    public List<Sponsor> getSponsors();
     public Sponsor getSponsor(int id);
     public boolean addSponsor(Sponsor sponsor);
     public boolean updateSponsor(Sponsor sponsor);

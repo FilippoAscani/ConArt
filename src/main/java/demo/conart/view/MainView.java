@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class MainView {
 
-    public MainView(){
+    private MainView(){
         //costruttore per le view
     }
 

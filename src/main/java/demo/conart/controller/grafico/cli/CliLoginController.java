@@ -13,32 +13,17 @@ import org.slf4j.LoggerFactory;
 public class CliLoginController {
 
 
-    private static final Logger log = LoggerFactory.getLogger(CliLoginController.class);
+
 
     public CliLoginController(){
         //vuoto
     }
 
-    public void cliLogin(){
-
-        BeanLogin beanLogin = new BeanLogin();
-
-        try{
-            beanLogin = LoginView.metodoLoginUno();
-        }
-        catch(Exception e){
-            LoginView.metodoLoginDue();
-        }
-
-        try {
-
-        } catch (Exception e) {
-            LoginView.metodoLoginDue();
-        }
-
-
-
+    public void login(){
+        //controller a linea di comando che chiama il login controller
     }
+
+
 
 
 

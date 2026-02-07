@@ -2,7 +2,7 @@ package demo.conart.model.dao.artist;
 
 import demo.conart.model.entity.Artist;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 public interface ArtistDao {

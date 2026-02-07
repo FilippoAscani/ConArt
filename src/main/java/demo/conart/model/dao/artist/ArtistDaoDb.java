@@ -12,6 +12,8 @@ import java.util.ArrayList;
 
 public class ArtistDaoDb implements ArtistDao{
 
+    private static final String USERNAME = "username";
+    private static final String PASSWORD = "password";
 
     @Override
     public ArrayList<Artist> getArtists() {
@@ -25,8 +27,8 @@ public class ArtistDaoDb implements ArtistDao{
 
             while(rs.next()){
                 Artist artist = new Artist();
-                artist.setUsername(rs.getString("username"));
-                artist.setPassword(rs.getString("password"));
+                artist.setUsername(rs.getString(USERNAME));
+                artist.setPassword(rs.getString(PASSWORD));
 
                 artists.add(artist);
             }
@@ -50,15 +52,15 @@ public class ArtistDaoDb implements ArtistDao{
 
             if(rs.next()){
                 Artist artist = new Artist();
-                artist.setUsername(rs.getString("username"));
-                artist.setPassword(rs.getString("password"));
+                artist.setUsername(rs.getString(USERNAME));
+                artist.setPassword(rs.getString(PASSWORD));
 
                 return artist;
             }
 
         }
         catch(SQLException | DBConnectionException e){
-            throw new IllegalStateException("Impossibile visualizzare artista", e);
+            throw new IllegalStateException("Impossibile visualizzare artista db", e);
         }
         return null;
 
@@ -86,8 +88,8 @@ public class ArtistDaoDb implements ArtistDao{
 
             if(rs.next()){
                 Artist artist = new Artist();
-                artist.setUsername(rs.getString("username"));
-                artist.setPassword(rs.getString("password"));
+                artist.setUsername(rs.getString(USERNAME));
+                artist.setPassword(rs.getString(PASSWORD));
 
                 return artist;
             }
