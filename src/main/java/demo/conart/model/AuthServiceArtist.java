@@ -30,7 +30,7 @@ public class AuthServiceArtist {
         if (!artistDao.exists(username, password))
             throw new IllegalArgumentException("Credenziali errate");
 
-        return artistDao.findByUsername(username);
+        return artistDao.getArtistByUsername(username);
     }
 }
 

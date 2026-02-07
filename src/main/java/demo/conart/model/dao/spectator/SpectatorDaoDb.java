@@ -19,14 +19,14 @@ public class SpectatorDaoDb implements SpectatorDao {
      */
 
     public SpectatorDaoDb() {
-
+        //costruttore vuoto
     }
 
 
     @Override
     public ArrayList<Spectator> getSpectators() {
-        ArrayList<Spectator> Spectators = new ArrayList<>();
-        String sql = "select * from Spectators";
+        ArrayList<Spectator> spectators = new ArrayList<>();
+        String sql = "select"+" * from spectators";
 
         try(Connection conn = DatabaseConnection.getInstance().getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
@@ -34,24 +34,24 @@ public class SpectatorDaoDb implements SpectatorDao {
 
 
             while(rs.next()){
-                Spectator Spectator = new Spectator();
-                Spectator.setUsername(rs.getString("Spectatorname"));
-                Spectator.setEmail(rs.getString("email"));
+                Spectator spectator = new Spectator();
+                spectator.setUsername(rs.getString("username"));
+                spectator.setEmail(rs.getString("email"));
 
-                Spectators.add(Spectator);
+                spectators.add(spectator);
             }
 
         }
         catch(SQLException | DBConnectionException e){
-            e.printStackTrace();
+            throw new IllegalStateException("Impossibile trovare spettatore", e);
         }
-        return Spectators;
+        return spectators;
     }
 
     //due modi uno passa l'id e l'altro passa un utente e poi fa getId
     @Override
     public Spectator getSpectator(int id) {
-        String sql = "select * from Spectators where id = ?";
+        String sql = "select *"+ " from Spectators where id = ?";
 
         try(Connection conn = DatabaseConnection.getInstance().getConnection();
             PreparedStatement ps = conn.prepareStatement(sql)) {
@@ -60,15 +60,15 @@ public class SpectatorDaoDb implements SpectatorDao {
             ResultSet rs = ps.executeQuery();
 
             if (rs.next()){
-                Spectator Spectator = new Spectator();
-                Spectator.setEmail(rs.getString("email"));
-                Spectator.setUsername(rs.getString("Spectatorname"));
-                return Spectator;
+                Spectator spectator = new Spectator();
+                spectator.setEmail(rs.getString("email"));
+                spectator.setUsername(rs.getString("username"));
+                return spectator;
             }
 
         }
         catch(SQLException | DBConnectionException e){
-            e.printStackTrace();
+            throw new IllegalStateException("Impossibile ottenere spettatore", e);
         }
         return null;
     }
@@ -80,36 +80,36 @@ public class SpectatorDaoDb implements SpectatorDao {
 
 
     @Override
-    public boolean addSpectator(Spectator Spectator) {
-        String sql = "insert into Spectators (Spectatorname, email) values (?, ?)";
+    public boolean addSpectator(Spectator spectator) {
+        String sql = "insert into Spectators (spectatorname, email) values (?, ?)";
 
         try (Connection conn = DatabaseConnection.getInstance().getConnection();
         PreparedStatement ps = conn.prepareStatement(sql)) {
 
-            ps.setString(1, Spectator.getUsername());
-            ps.setString(2, Spectator.getEmail());
+            ps.setString(1, spectator.getUsername());
+            ps.setString(2, spectator.getEmail());
             ps.executeUpdate();
 
             return true;
 
         }
         catch(SQLException | DBConnectionException e){
-            e.printStackTrace();
+            throw new IllegalStateException("Impossibile aggiungere spettatore", e);
         }
 
-        return false;
+
     }
 
 
     @Override
-    public boolean updateSpectator(Spectator Spectator) {
+    public boolean updateSpectator(Spectator spectator) {
         String sql = "update Spectators set Spectatorname = ?, email = ?";
 
         try(Connection conn = DatabaseConnection.getInstance().getConnection();
            PreparedStatement ps = conn.prepareStatement(sql)) {
 
-            ps.setString(1,Spectator.getUsername());
-            ps.setString(2, Spectator.getEmail());
+            ps.setString(1,spectator.getUsername());
+            ps.setString(2, spectator.getEmail());
 
             ps.executeUpdate();
 
@@ -117,10 +117,10 @@ public class SpectatorDaoDb implements SpectatorDao {
 
         }
         catch(SQLException | DBConnectionException e){
-            e.printStackTrace();
+            throw new IllegalStateException("Impossibile aggiornare spettatore", e);
         }
 
-        return false;
+
     }
 
 
@@ -145,10 +145,10 @@ public class SpectatorDaoDb implements SpectatorDao {
             return true;
         }
         catch(SQLException | DBConnectionException e){
-            e.printStackTrace();
+            throw new IllegalStateException("Impossibile cancellare spettatore", e);
         }
 
-        return false;
+
     }
 
 
@@ -166,8 +166,9 @@ public class SpectatorDaoDb implements SpectatorDao {
             }
 
         } catch (SQLException | DBConnectionException e) {
-            logger.error("Error checking spectator existence", e);
-            return false;
+            throw new IllegalStateException("Impossibile trovare spettatore", e);
+
         }
+
     }
 }

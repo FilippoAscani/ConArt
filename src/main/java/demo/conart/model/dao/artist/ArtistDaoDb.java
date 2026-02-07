@@ -33,7 +33,7 @@ public class ArtistDaoDb implements ArtistDao{
 
         }
         catch(SQLException | DBConnectionException e){
-            e.printStackTrace();
+            throw new IllegalStateException("Impossibile visualizzare artisti", e);
         }
         return artists;
     }
@@ -58,11 +58,61 @@ public class ArtistDaoDb implements ArtistDao{
 
         }
         catch(SQLException | DBConnectionException e){
-            e.printStackTrace();
+            throw new IllegalStateException("Impossibile visualizzare artista", e);
         }
         return null;
 
     }
+
+
+
+
+
+
+
+
+
+
+
+    @Override
+    public Artist getArtistByUsername(String username) {
+        String sql = "select *" + " from artist where id = ?";
+
+        try(Connection conn = DatabaseConnection.getInstance().getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setString(1, username);
+            ResultSet rs = ps.executeQuery();
+
+            if(rs.next()){
+                Artist artist = new Artist();
+                artist.setUsername(rs.getString("username"));
+                artist.setPassword(rs.getString("password"));
+
+                return artist;
+            }
+
+        }
+        catch(SQLException | DBConnectionException e){
+            throw new IllegalStateException("Impossibile visualizzare artista", e);
+        }
+        return null;
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -84,11 +134,12 @@ public class ArtistDaoDb implements ArtistDao{
             return true;
         }
         catch (SQLException | DBConnectionException e){
-            e.printStackTrace();
+            throw new IllegalStateException("Impossibile visualizzare artista", e);
         }
-
-        return false;
+        
     }
+
+
 
 
 
@@ -101,23 +152,22 @@ public class ArtistDaoDb implements ArtistDao{
 
     @Override
     public boolean updateArtist(Artist artist) {
-        String sql = "update artist set username = ?, password = ?";
+        String sql = "UPDATE artist SET username = ?, password = ? WHERE id = ?";
 
-        try(Connection conn = DatabaseConnection.getInstance().getConnection();
-           PreparedStatement ps = conn.prepareStatement(sql)) {
+        try (Connection conn = DatabaseConnection.getInstance().getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
 
             ps.setString(1, artist.getUsername());
             ps.setString(2, artist.getPassword());
+            ps.setInt(3, artist.getId());
 
-            ps.executeUpdate();
+            return ps.executeUpdate() > 0;
 
-            return true;
+        } catch (SQLException | DBConnectionException e) {
+            throw new IllegalStateException("Impossibile aggiornare artista", e);
         }
-        catch (SQLException | DBConnectionException e){
-            e.printStackTrace();
-        }
-        return false;
     }
+
 
 
 
@@ -138,10 +188,10 @@ public class ArtistDaoDb implements ArtistDao{
 
         }
         catch (SQLException | DBConnectionException e){
-            e.printStackTrace();
+            throw new IllegalStateException("Impossibile cancellare artista", e);
         }
 
-        return false;
+
     }
 
 
@@ -159,8 +209,8 @@ public class ArtistDaoDb implements ArtistDao{
             }
 
         } catch (SQLException | DBConnectionException e) {
-            logger.error("Error checking spectator existence", e);
-            return false;
+            throw new IllegalStateException("Impossibile trovare artista ", e);
+
         }
     }
 

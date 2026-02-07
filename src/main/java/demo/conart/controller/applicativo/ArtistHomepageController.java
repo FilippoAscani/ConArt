@@ -32,10 +32,10 @@ public class ArtistHomepageController {
 
             if (accepted) {
                 Show show = new Show(
-                        request.getId(),
-                        request.getNome(),
-                        request.getCapienza(),
-                        request.getTipo()
+                        show.getId(),
+                        show.post(),
+                        show.getNumeroPosti(),
+                        show.getTipo()
                 );
                 showDAO.addShow(show);
                 request.setStatus("accepted");

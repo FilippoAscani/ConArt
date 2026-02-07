@@ -1,7 +1,8 @@
 package demo.conart.controller.grafico.gui;
 
 
-import demo.conart.model.dao.spectator.SpectatorDao;
+import demo.conart.model.dao.artist.ArtistDaoCsv;
+import demo.conart.model.dao.artist.ArtistDaoDb;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -19,7 +20,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
-import SpectatorDaoCsv
 
 public class GuiArtistLoginController implements Initializable {
 
@@ -53,6 +53,8 @@ public class GuiArtistLoginController implements Initializable {
     private TextField usernameFieldA;
 
     private static final Logger logger = LoggerFactory.getLogger(GuiArtistLoginController.class);
+    private ArtistDaoCsv artistDaoCsv;
+    private ArtistDaoDb artistDaoDb;
 
     @FXML
     public void select(ActionEvent actionEvent) {
@@ -91,10 +93,7 @@ public class GuiArtistLoginController implements Initializable {
             case "JDBC":
 
 
-
-                String query = "SELECT username, password FROM artists WHERE username = ? AND password = ?";
-
-                if(CercaDB.cercaA(query,username,password)){
+                if(artistDaoDb.exists(username,password)){
                     Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("artist-profile-view.fxml")));
                     Stage stage = (Stage) btnLoginA.getScene().getWindow();
                     stage.setScene(new Scene(root));
@@ -107,7 +106,7 @@ public class GuiArtistLoginController implements Initializable {
             case "CSV":
 
 
-                if(exists(username,password)){
+                if(artistDaoCsv.exists(username,password)){
                     Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("artist-profile-view.fxml")));
                     Stage stage = (Stage) btnLoginA.getScene().getWindow();
                     stage.setScene(new Scene(root));

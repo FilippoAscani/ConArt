@@ -1,11 +1,18 @@
 package demo.conart.model;
 
+import demo.conart.model.dao.spectator.SpectatorDao;
+import demo.conart.model.dao.sponsor.SponsorDao;
 import demo.conart.model.entity.Artist;
 import demo.conart.model.entity.Spectator;
 import demo.conart.model.entity.Sponsor;
 import demo.conart.model.entity.User;
+import demo.conart.model.dao.artist.ArtistDao;
 
 public class Register {
+
+    ArtistDao artistDao;
+    SponsorDao sponsorDao;
+    SpectatorDao spectatorDao;
 
 
     public User login(String username, String password) {
@@ -13,13 +20,13 @@ public class Register {
         validateCredentials(username, password);
 
         if (artistDao.exists(username, password))
-            return artistDao.findByUsername(username);
+            return artistDao.getArtistByUsername(username);
 
         if (spectatorDao.exists(username, password))
-            return spectatorDao.findByUsername(username);
+            return spectatorDao.getSpectatorByUsername(username);
 
         if (sponsorDao.exists(username, password))
-            return sponsorDao.findByUsername(username);
+            return sponsorDao.getSponsorByUsername(username);
 
         throw new IllegalArgumentException("Credenziali non valide");
     }
@@ -27,14 +34,14 @@ public class Register {
     public void registerArtist(String username, String password, String tipo) {
 
         validateCredentials(username, password);
-        checkUsernameUniqueness(username);
+        checkUsernameUniqueness(username,password);
 
         Artist artist = new Artist();
         artist.setUsername(username);
         artist.setPassword(password);
         artist.setTipo(tipo);
 
-        artistDao.add(artist);
+        artistDao.addArtist(artist);
     }
 
 
@@ -43,7 +50,7 @@ public class Register {
                                   String email, String cf) {
 
         validateCredentials(username, password);
-        checkUsernameUniqueness(username);
+        checkUsernameUniqueness(username,password);
 
         Spectator s = new Spectator();
         s.setUsername(username);
@@ -53,20 +60,20 @@ public class Register {
         s.setEmail(email);
         s.setCf(cf);
 
-        spectatorDao.add(s);
+        spectatorDao.addSpectator(s);
     }
 
 
     public void registerSponsor(String username, String password) {
 
         validateCredentials(username, password);
-        checkUsernameUniqueness(username);
+        checkUsernameUniqueness(username,password);
 
         Sponsor sponsor = new Sponsor();
         sponsor.setUsername(username);
         sponsor.setPassword(password);
 
-        sponsorDao.add(sponsor);
+        sponsorDao.addSponsor(sponsor);
     }
 
     private void validateCredentials(String username, String password) {
@@ -79,11 +86,11 @@ public class Register {
     }
 
 
-    private void checkUsernameUniqueness(String username) {
+    private void checkUsernameUniqueness(String username, String password) {
 
-        if (artistDao.existsByUsername(username)
-                || spectatorDao.existsByUsername(username)
-                || sponsorDao.existsByUsername(username)) {
+        if (artistDao.exists(username,password)
+                || spectatorDao.exists(username,password)
+                || sponsorDao.exists(username,password)) {
 
             throw new IllegalStateException("Username già esistente");
         }

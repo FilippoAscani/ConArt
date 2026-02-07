@@ -17,5 +17,6 @@ public interface SpectatorDao {
     public boolean updateSpectator(Spectator Spectator);
     public boolean deleteSpectator(int id);
     public boolean exists(String username, String password);
+    public Spectator getSpectatorByUsername(String username);
 
 }

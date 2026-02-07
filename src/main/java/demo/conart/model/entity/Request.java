@@ -6,7 +6,8 @@ public class Request {
 
     private int id;
     private int numeroPosti;
-    private String tipoShow;
+    private String tipo;
+    private String nome;
     private Sponsor sponsor;
     private Artist artist;
     private RequestStatus status;
@@ -35,12 +36,12 @@ public class Request {
         this.artist = artist;
     }
 
-    public String getTipoShow() {
-        return tipoShow;
+    public String getTipo() {
+        return tipo;
     }
 
-    public void setTipoShow(String tipoShow) {
-        this.tipoShow = tipoShow;
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
     public int getNumeroPosti() {
@@ -57,5 +58,13 @@ public class Request {
 
     public void setStatus(RequestStatus status) {
         this.status = status;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 }

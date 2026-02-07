@@ -5,6 +5,7 @@ public class Show {
 
     private int id;
     private int postiDisponibili;
+    private String titolo;
     private String tipo;
     private Artist artist;
     private Sponsor sponsor;
@@ -47,5 +48,13 @@ public class Show {
 
     public void setSponsor(Sponsor sponsor) {
         this.sponsor = sponsor;
+    }
+
+    public String getTitolo() {
+        return titolo;
+    }
+
+    public void setTitolo(String titolo) {
+        this.titolo = titolo;
     }
 }

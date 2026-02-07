@@ -32,7 +32,7 @@ public class ArtistDaoCsv implements ArtistDao {
 
         }
         catch(IOException e){
-            e.printStackTrace();
+            throw new IllegalStateException("Impossibile ottenere artisti", e);
         }
         return artists;
 
@@ -74,7 +74,40 @@ public class ArtistDaoCsv implements ArtistDao {
 
         }
         catch(IOException e){
-            e.printStackTrace();
+            throw new IllegalStateException("Impossibile ottenere artista", e);
+        }
+        return null;
+
+    }
+
+
+
+
+
+
+
+    @Override
+    public Artist getArtistByUsername(String username) {
+
+        try (BufferedReader br = new BufferedReader(new FileReader(FILENAME))) {
+            String line;
+            br.readLine();
+
+            while((line = br.readLine()) != null){
+                String[] data = line.split(",");
+
+                if(username.equals(data[1].trim())){
+
+                    Artist artist = new Artist();
+                    artist.setUsername(data[1]);
+                    artist.setPassword(data[2]);
+                    return artist;
+                }
+            }
+
+        }
+        catch(IOException e){
+            throw new IllegalStateException("Impossibile ottenere artista", e);
         }
         return null;
 
@@ -99,10 +132,10 @@ public class ArtistDaoCsv implements ArtistDao {
             return true;
         }
         catch(IOException e){
-            e.printStackTrace();
+            throw new IllegalStateException("Impossibile aggiungere artista", e);
         }
 
-        return false;
+
 
     }
 
@@ -152,7 +185,7 @@ public class ArtistDaoCsv implements ArtistDao {
 
         }
         catch(IOException e){
-            e.printStackTrace();
+            throw new IllegalStateException("Impossibile aggiornare artista", e);
         }
 
         if (input.delete() && temp.renameTo(input)) {
@@ -206,7 +239,7 @@ public class ArtistDaoCsv implements ArtistDao {
 
         }
         catch(IOException e){
-            e.printStackTrace();
+            throw new IllegalStateException("Impossibile cancellare artista", e);
         }
 
         if (input.delete() && temp.renameTo(input)) {
@@ -230,7 +263,7 @@ public class ArtistDaoCsv implements ArtistDao {
                 }
             }
         } catch (IOException e) {
-            e.printStackTrace(); // o meglio logger
+            throw new IllegalStateException("Impossibile trovare artista", e);
         }
         return false;
     }

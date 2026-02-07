@@ -32,7 +32,7 @@ public class SpectatorDaoCsv implements SpectatorDao {
             }
         }
         catch (IOException e) {
-            e.printStackTrace();
+            throw new IllegalStateException("Impossibile trovare spettatori", e);
         }
         return Spectators;
 
@@ -64,16 +64,16 @@ public class SpectatorDaoCsv implements SpectatorDao {
                 String[] data = line.split(",");
                 if (Integer.parseInt(data[0]) == id) {
 
-                    Spectator Spectator = new Spectator();
-                    Spectator.setUsername(data[1]);
-                    Spectator.setPassword(data[2]);
-                    return Spectator;
+                    Spectator spectator = new Spectator();
+                    spectator.setUsername(data[1]);
+                    spectator.setPassword(data[2]);
+                    return spectator;
                 }
             }
 
         }
         catch(IOException e){
-            e.printStackTrace();
+            throw new IllegalStateException("Impossibile ottenere spettatore", e);
         }
 
         return null;
@@ -104,9 +104,9 @@ public class SpectatorDaoCsv implements SpectatorDao {
             return true;
         }
         catch(IOException e){
-            e.printStackTrace();
+            throw new IllegalStateException("Impossibile aggiungere spettatore", e);
         }
-        return false;
+
 
     }
 
@@ -143,7 +143,7 @@ public class SpectatorDaoCsv implements SpectatorDao {
                 int id = Integer.parseInt(data[0]);
 
                 if (id == spectator.getId()) {
-                    String updateLine = Spectator.getUsername() + "," + Spectator.getPassword();
+                    String updateLine = spectator.getUsername() + "," + spectator.getPassword();
                     bw.write(updateLine);
                     updated = true;
                 }
@@ -156,7 +156,7 @@ public class SpectatorDaoCsv implements SpectatorDao {
 
         }
         catch (IOException e){
-            e.printStackTrace();
+            throw new IllegalStateException("Impossibile aggiornare spettatore", e);
         }
 
         if(input.delete() && temp.renameTo(input)){
@@ -209,7 +209,7 @@ public class SpectatorDaoCsv implements SpectatorDao {
             }
         }
         catch (IOException e){
-            e.printStackTrace();
+            throw new IllegalStateException("Impossibile cancellare spettatore", e);
         }
 
         if(input.delete() && temp.renameTo(input)){
@@ -232,7 +232,7 @@ public class SpectatorDaoCsv implements SpectatorDao {
                 }
             }
         } catch (IOException e) {
-            e.printStackTrace(); // o meglio logger
+            throw new IllegalStateException("Impossibile cercare spettatore", e);
         }
         return false;
     }
