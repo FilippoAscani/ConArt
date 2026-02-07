@@ -35,7 +35,7 @@ public class SponsorDaoDb implements SponsorDao {
 
         }
         catch(SQLException | DBConnectionException e){
-            e.printStackTrace();
+            throw new IllegalStateException("Impossibile vedere gli sponsor", e);
         }
         return sponsors;
     }
@@ -59,10 +59,16 @@ public class SponsorDaoDb implements SponsorDao {
 
         }
         catch(SQLException | DBConnectionException e){
-            e.printStackTrace();
+            throw new IllegalStateException("Impossibile ottenere sponsor", e);
         }
         return null;
 
+    }
+
+    @Override
+    public Sponsor getSponsorByUsername(String username) {
+        //aggiungere metodo
+        return null;
     }
 
 
@@ -86,10 +92,10 @@ public class SponsorDaoDb implements SponsorDao {
             return true;
         }
         catch(SQLException | DBConnectionException e){
-            e.printStackTrace();
+            throw new IllegalStateException("Impossibile aggiungere sponsor", e);
         }
 
-        return false;
+
     }
 
 
@@ -120,10 +126,10 @@ public class SponsorDaoDb implements SponsorDao {
             return true;
         }
         catch(SQLException | DBConnectionException e){
-            e.printStackTrace();
+            throw new IllegalStateException("Impossibile aggiornare sponsor", e);
         }
 
-        return false;
+
     }
 
 
@@ -146,10 +152,10 @@ public class SponsorDaoDb implements SponsorDao {
             return true;
         }
         catch(SQLException | DBConnectionException e){
-            e.printStackTrace();
+            throw new IllegalStateException("Impossibile cancellare sponsor", e);
         }
 
-        return false;
+
 
     }
 
@@ -167,8 +173,7 @@ public class SponsorDaoDb implements SponsorDao {
             }
 
         } catch (SQLException | DBConnectionException e) {
-            logger.error("Error checking spectator existence", e);
-            return false;
+            throw new IllegalStateException("Impossibile trovare sponsor", e);
         }
     }
 

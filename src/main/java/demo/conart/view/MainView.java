@@ -35,6 +35,25 @@ public class MainView {
         return scanner.nextLine();
     }
 
+    public static String notValidUi() {
+        logger.info("Errore, scegliere yta i seguenti: gui, cli");
+
+        return scanner.nextLine();
+    }
+
+    public static String notValidPersistence() {
+        logger.info("Errore, scegliere tra i seguenti: jdbc, csv");
+
+        return scanner.nextLine();
+    }
+
+    public static String notValidUser() {
+        logger.info("Errore, scegliere tra i seguenti: artist, spectator, sponsor");
+
+        return scanner.nextLine();
+    }
+
+
 
 
 

@@ -1,5 +1,6 @@
 package demo.conart.controller.applicativo;
 
+import demo.conart.enums.RequestStatus;
 import demo.conart.model.dao.request.RequestDaoCsv;
 import demo.conart.model.dao.show.ShowDaoCsv;
 import demo.conart.model.entity.Artist;
@@ -31,16 +32,17 @@ public class ArtistHomepageController {
             boolean accepted = view.askAcceptRequest(request);
 
             if (accepted) {
-                Show show = new Show(
-                        show.getId(),
-                        show.post(),
-                        show.getNumeroPosti(),
-                        show.getTipo()
-                );
+                Show show = new Show();
+
+                show.setTipo(request.getTipo());
+                show.setTitolo(request.getNome());
+                show.setPostiDisponibili(request.getNumeroPosti());
+
                 showDAO.addShow(show);
-                request.setStatus("accepted");
+
+                request.setStatus(RequestStatus.ACCEPTED);
             } else {
-                request.setStatus("denied");
+                request.setStatus(RequestStatus.REJECTED);
             }
         }
     }

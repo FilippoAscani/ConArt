@@ -3,6 +3,7 @@ package demo.conart.view;
 import demo.conart.model.entity.Artist;
 import demo.conart.model.entity.Request;
 import demo.conart.model.entity.Show;
+import demo.conart.model.entity.Sponsor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -24,7 +25,7 @@ public class SponsorHomepageCliView {
         return scanner.nextLine();
     }
 
-    public void showProfile(Artist artist) {
+    public void showProfile(Sponsor sponsor) {
         logger.info("ID {}", sponsor.getId());
         logger.info("Username {}", sponsor.getUsername());
     }

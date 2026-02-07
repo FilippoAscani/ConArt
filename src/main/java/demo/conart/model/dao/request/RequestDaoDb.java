@@ -27,7 +27,7 @@ public class RequestDaoDb implements RequestDao {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ps.setInt(1, request.getId());
                 ps.setString(2, request.getNome());
-                ps.setInt(3, request.getCapienza());
+                ps.setInt(3, request.getNumeroPosti());
                 ps.setString(4, request.getTipo());
                 ps.executeUpdate();
             }
@@ -46,7 +46,7 @@ public class RequestDaoDb implements RequestDao {
             Connection connection = DatabaseConnection.getInstance().getConnection();
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ps.setString(1, request.getNome());
-                ps.setInt(2, request.getCapienza());
+                ps.setInt(2, request.getNumeroPosti());
                 ps.setString(3, request.getTipo());
                 ps.executeUpdate();
             }

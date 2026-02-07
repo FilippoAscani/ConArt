@@ -15,7 +15,7 @@ public class ReviewDaoCsv implements ReviewDao {
 
     }
 
-    private static final String FILE = "review.csv";
+    private static final String FILE = "reviews.csv";
 
     @Override
     public void addReview(Review review) {
@@ -25,7 +25,7 @@ public class ReviewDaoCsv implements ReviewDao {
         try {
 
             BufferedWriter bw = new BufferedWriter(new FileWriter( FILE, true));
-            bw.write(review.getId() + "," + review.getContent());
+            bw.write(review.getId() + "," + review.getCommento());
             bw.newLine();
             bw.close();
 
@@ -45,9 +45,9 @@ public class ReviewDaoCsv implements ReviewDao {
             try (BufferedWriter br = new BufferedWriter(new FileWriter(FILE, true))) {
                 for (Review r : reviews) {
                     if (r.getId() == review.getId()) {
-                        br.write(review.getId() + "," + review.getContent());
+                        br.write(review.getId() + "," + review.getCommento());
                     } else {
-                        br.write(r.getId() + "," + r.getContent());
+                        br.write(r.getId() + "," + r.getCommento());
                     }
                     br.newLine();
                 }
@@ -66,7 +66,7 @@ public class ReviewDaoCsv implements ReviewDao {
             try (BufferedWriter bw = new BufferedWriter(new FileWriter(FILE, true))) {
                 for (Review r : reviews) {
                     if (r.getId() != review.getId()) {
-                        bw.write(r.getId() + "," + r.getContent());
+                        bw.write(r.getId() + "," + r.getCommento());
                         bw.newLine();
                     }
                 }

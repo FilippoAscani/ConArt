@@ -1,7 +1,6 @@
 package demo.conart.controller.applicativo;
 
-import demo.conart.controller.grafico.cli.CliLoginController;
-import demo.conart.controller.grafico.gui.GuiLoginController;
+
 import demo.conart.enums.TypesOfPersistenceLayer;
 import demo.conart.enums.TypesOfUis;
 import demo.conart.other.AppConfig;
@@ -25,7 +24,7 @@ public class AppController {
         TypesOfUis ui = switch (sceltaView) {
             case "1" -> TypesOfUis.CLI;
             case "2" -> TypesOfUis.JAVAFX;
-            default -> { System.out.println("UI non valida"); yield null; }
+            default -> { MainView.notValidUi(); yield null; }
         };
         if(ui == null) return;
         AppConfig.getInstance().setTypesOfUis(ui);
@@ -35,7 +34,7 @@ public class AppController {
         TypesOfPersistenceLayer persistenceLayer = switch (sceltaPersistenza) {
             case "1" -> TypesOfPersistenceLayer.JDBC;
             case "2" -> TypesOfPersistenceLayer.FS;
-            default -> { System.out.println("Persistenza non valida"); yield null; }
+            default -> { MainView.notValidPersistence(); yield null; }
         };
         if(persistenceLayer == null) return;
         AppConfig.getInstance().setTypesOfPersistenceLayer(persistenceLayer);
@@ -52,7 +51,7 @@ public class AppController {
             case "spettatore" -> new SpectatorLoginController(persistenza);
             case "artista" -> new ArtistLoginController(persistenza);
             case "sponsor" -> new SponsorLoginController(persistenza);
-            default -> { System.out.println("Tipo utente non valido"); yield null; }
+            default -> { MainView.notValidUser(); yield null; }
         };
         if(loginController == null) return;
 

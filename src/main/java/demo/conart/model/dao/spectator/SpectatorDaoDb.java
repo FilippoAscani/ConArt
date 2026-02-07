@@ -74,7 +74,11 @@ public class SpectatorDaoDb implements SpectatorDao {
     }
 
 
-
+    @Override
+    public Spectator getSpectatorByUsername(String username) {
+        //aggiungere metodo
+        return null;
+    }
 
 
 

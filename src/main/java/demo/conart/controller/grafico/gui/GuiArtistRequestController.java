@@ -2,7 +2,9 @@ package demo.conart.controller.grafico.gui;
 
 
 
+import demo.conart.enums.RequestStatus;
 import demo.conart.model.entity.Request;
+import demo.conart.model.entity.Show;
 import demo.conart.other.DatabaseConnection;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -128,10 +130,10 @@ public class GuiArtistRequestController implements Initializable {
     }
 
     private void acceptShow(Request request) {
-        Show show = new Show(request.getId(), request.getNome(), request.getCapienza(), request.getTipo());
+        Show show = new Show(request.getId(), request.getNome(), request.getNumeroPosti(), request.getTipo());
         Register.registraShowDB(show);
         Register.registraShowCSV(show);
-        request.setStatus("accettata");
+        request.setStatus(RequestStatus.ACCEPTED);
 
         int index = richieste.indexOf(request);
         if (index != -1) {

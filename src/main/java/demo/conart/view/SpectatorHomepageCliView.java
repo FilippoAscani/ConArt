@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 public class SpectatorHomepageCliView {
 
-    private static final Logger logger = LoggerFactory.getLogger(ArtistHomepageCliView.class);
+    private static final Logger logger = LoggerFactory.getLogger(SpectatorHomepageCliView.class);
     private final Scanner scanner = new Scanner(System.in);
 
     public String showMenuAndGetChoice() {

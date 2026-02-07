@@ -8,14 +8,14 @@ import java.util.List;
 
 public class RequestDaoCsv implements RequestDao {
 
-    private static final String FILE = "request.csv";
+    private static final String FILE = "requests.csv";
 
     @Override
     public void addRequest(Request request) {
         try {
 
             BufferedWriter bw = new BufferedWriter(new FileWriter( FILE, true));
-            bw.write(request.getId() + "," + request.getNome() + "," + request.getCapienza() + "," + request.getTipo());
+            bw.write(request.getId() + "," + request.getNome() + "," + request.getNumeroPosti() + "," + request.getTipo());
             bw.newLine();
             bw.close();
 
@@ -32,9 +32,9 @@ public class RequestDaoCsv implements RequestDao {
             try (BufferedWriter br = new BufferedWriter(new FileWriter(FILE, true))) {
                 for (Request r : requests) {
                     if (r.getId() == request.getId()) {
-                        br.write(request.getId() + "," + request.getNome() + "," + request.getCapienza() + "," + request.getTipo());
+                        br.write(request.getId() + "," + request.getNome() + "," + request.getNumeroPosti() + "," + request.getTipo());
                     } else {
-                        br.write(r.getId() + "," + r.getNome() + "," + r.getCapienza() + "," + request.getTipo());
+                        br.write(r.getId() + "," + r.getNome() + "," + r.getNumeroPosti() + "," + request.getTipo());
                     }
                     br.newLine();
                 }
@@ -52,7 +52,7 @@ public class RequestDaoCsv implements RequestDao {
             try (BufferedWriter bw = new BufferedWriter(new FileWriter(FILE, true))) {
                 for (Request r : requests) {
                     if (r.getId() != request.getId()) {
-                        bw.write(r.getId() + "," + r.getNome() + "," + r.getCapienza() + "," + request.getTipo());
+                        bw.write(r.getId() + "," + r.getNome() + "," + r.getNumeroPosti() + "," + request.getTipo());
                         bw.newLine();
                     }
                 }

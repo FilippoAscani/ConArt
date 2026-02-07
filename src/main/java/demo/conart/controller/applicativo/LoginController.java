@@ -1,7 +1,6 @@
 package demo.conart.controller.applicativo;
 
-import demo.conart.bean.BeanLogin;
-import demo.conart.bean.BeanSpectator;
+
 import demo.conart.other.PersistenceStrategy;
 import demo.conart.view.LoginView;
 

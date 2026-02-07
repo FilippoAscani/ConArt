@@ -2,7 +2,7 @@ package demo.conart.model.dao.spectator;
 
 import demo.conart.model.entity.Spectator;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public interface SpectatorDao {
 
@@ -11,10 +11,10 @@ public interface SpectatorDao {
 
      */
 
-    public ArrayList<Spectator> getSpectators();
+    public List<Spectator> getSpectators();
     public Spectator getSpectator(int id);
-    public boolean addSpectator(Spectator Spectator);
-    public boolean updateSpectator(Spectator Spectator);
+    public boolean addSpectator(Spectator spectator);
+    public boolean updateSpectator(Spectator spectator);
     public boolean deleteSpectator(int id);
     public boolean exists(String username, String password);
     public Spectator getSpectatorByUsername(String username);

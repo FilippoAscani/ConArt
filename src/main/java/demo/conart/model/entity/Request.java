@@ -12,12 +12,37 @@ public class Request {
     private Artist artist;
     private RequestStatus status;
 
+
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getNumeroPosti() {
+        return numeroPosti;
+    }
+
+    public void setNumeroPosti(int numeroPosti) {
+        this.numeroPosti = numeroPosti;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public Sponsor getSponsor() {
@@ -36,35 +61,11 @@ public class Request {
         this.artist = artist;
     }
 
-    public String getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
-
-    public int getNumeroPosti() {
-        return numeroPosti;
-    }
-
-    public void setNumeroPosti(int numeroPosti) {
-        this.numeroPosti = numeroPosti;
-    }
-
     public RequestStatus getStatus() {
         return status;
     }
 
     public void setStatus(RequestStatus status) {
         this.status = status;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
     }
 }

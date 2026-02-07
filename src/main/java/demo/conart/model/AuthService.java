@@ -3,7 +3,7 @@ package demo.conart.model;
 import demo.conart.model.dao.artist.ArtistDao;
 import demo.conart.model.dao.spectator.SpectatorDao;
 import demo.conart.model.dao.sponsor.SponsorDao;
-import demo.conart.model.entity.Spectator;
+
 
 public class AuthService {
 

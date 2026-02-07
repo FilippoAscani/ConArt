@@ -46,12 +46,6 @@ public class SpectatorDaoCsv implements SpectatorDao {
 
 
 
-
-
-
-
-
-
     @Override
     public Spectator getSpectator(int id) {
 
@@ -80,7 +74,11 @@ public class SpectatorDaoCsv implements SpectatorDao {
     }
 
 
-
+    @Override
+    public Spectator getSpectatorByUsername(String username) {
+        //aggiungere metodo
+        return null;
+    }
 
 
 

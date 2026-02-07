@@ -85,10 +85,11 @@ public class SponsorDaoCsv implements SponsorDao {
 
 
 
-
-
-
-
+    @Override
+    public Sponsor getSponsorByUsername(String username) {
+        //aggiungere metodo
+        return null;
+    }
 
 
 

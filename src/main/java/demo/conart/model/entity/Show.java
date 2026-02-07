@@ -3,6 +3,11 @@ package demo.conart.model.entity;
 public class Show {
 
 
+    public Show(){
+
+    }
+
+
     private int id;
     private int postiDisponibili;
     private String titolo;
@@ -18,12 +23,29 @@ public class Show {
         }
     }
 
+
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getPostiDisponibili() {
+        return postiDisponibili;
+    }
+
+    public void setPostiDisponibili(int postiDisponibili) {
+        this.postiDisponibili = postiDisponibili;
+    }
+
+    public String getTitolo() {
+        return titolo;
+    }
+
+    public void setTitolo(String titolo) {
+        this.titolo = titolo;
     }
 
     public String getTipo() {
@@ -48,13 +70,5 @@ public class Show {
 
     public void setSponsor(Sponsor sponsor) {
         this.sponsor = sponsor;
-    }
-
-    public String getTitolo() {
-        return titolo;
-    }
-
-    public void setTitolo(String titolo) {
-        this.titolo = titolo;
     }
 }

@@ -1,10 +1,7 @@
 package demo.conart;
 
 import demo.conart.controller.applicativo.AppController;
-import demo.conart.view.MainView;
 
-import java.util.Scanner;
-import java.util.logging.Logger;
 
 public class MainApp {
 
