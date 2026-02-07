@@ -10,7 +10,7 @@ public abstract class User {
     protected String password;
     protected Ruolo ruolo;
 
-    public User(){
+    protected User(){
         //costruttore
     }
 

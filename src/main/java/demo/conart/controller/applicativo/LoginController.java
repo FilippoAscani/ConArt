@@ -9,7 +9,7 @@ public abstract class LoginController {
     protected PersistenceStrategy persistenza;
     protected LoginView loginView;
 
-    public LoginController(PersistenceStrategy persistenza) {
+    protected LoginController(PersistenceStrategy persistenza) {
         this.persistenza = persistenza;
         this.loginView = new LoginView();
     }

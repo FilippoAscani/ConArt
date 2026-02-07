@@ -12,12 +12,12 @@ public class UserDaoDb implements UserDao {
     @Override
     public void salva(BeanLogin user) {
         database.put(user.getUsername(), user);
-        System.out.println("Salvato su DB: " + user);
+
     }
 
     @Override
     public BeanLogin carica(String username) {
-        System.out.println("Caricato dal DB: " + username);
+        
         return database.get(username);
     }
 

@@ -17,7 +17,7 @@ public class DatabaseConnection {
     * */
 
     private static DatabaseConnection instance = null;
-    private static Connection conn = null;
+    private  Connection conn = null;
 
     private DatabaseConnection() {
 

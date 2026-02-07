@@ -12,12 +12,11 @@ public class UserDaoCsv implements UserDao {
     @Override
     public void salva(BeanLogin user) {
         fileStorage.put(user.getUsername(), user);
-        System.out.println("Salvato su CSV: " + user);
+
     }
 
     @Override
     public BeanLogin carica(String username) {
-        System.out.println("Caricato da CSV: " + username);
         return fileStorage.get(username);
     }
 

@@ -45,7 +45,7 @@ public class StarsController {
             star.setOnMouseClicked(e -> {
                 rating = index + 1;
                 aggiornaStelle(rating);
-                System.out.println("Rating: " + rating);
+
             });
         }
 
