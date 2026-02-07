@@ -16,7 +16,7 @@ import java.util.List;
 
 public class ShowDaoDb implements ShowDao {
 
-    private static final Logger logger = LoggerFactory.getLogger(ShowDAOImplDB.class);
+    private static final Logger logger = LoggerFactory.getLogger(ShowDaoDb.class);
 
     @Override
     public void addShow(Show show) {
@@ -27,7 +27,7 @@ public class ShowDaoDb implements ShowDao {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ps.setInt(1, show.getId());
                 ps.setString(2, show.getTitolo());
-                ps.setInt(3, show.getCapienza());
+                ps.setInt(3, show.getPostiDisponibili());
                 ps.setString(4, show.getTipo());
                 ps.executeUpdate();
             }
@@ -46,7 +46,7 @@ public class ShowDaoDb implements ShowDao {
             Connection connection = DatabaseConnection.getInstance().getConnection();
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ps.setString(1, show.getTitolo());
-                ps.setInt(2, show.getCapienza());
+                ps.setInt(2, show.getPostiDisponibili());
                 ps.setString(3, show.getTipo());
                 ps.executeUpdate();
             }

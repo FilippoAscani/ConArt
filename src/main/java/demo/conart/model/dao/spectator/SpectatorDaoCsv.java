@@ -3,6 +3,8 @@ package demo.conart.model.dao.spectator;
 import demo.conart.model.entity.Spectator;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 
 public class SpectatorDaoCsv implements SpectatorDao {
@@ -15,26 +17,26 @@ public class SpectatorDaoCsv implements SpectatorDao {
     public ArrayList<Spectator> getSpectators() {
 
 
-        ArrayList<Spectator> Spectators = new ArrayList<>();
+        ArrayList<Spectator> spectators = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(FILENAME))) {
 
             String line;
-            br.readLine();
+
 
             while((line = br.readLine())!=null) {
                 String[] data = line.split(",");
 
-                Spectator Spectator = new Spectator();
-                Spectator.setUsername(data[0]);
-                Spectator.setPassword(data[1]);
+                Spectator spectator = new Spectator();
+                spectator.setUsername(data[0]);
+                spectator.setPassword(data[1]);
 
-                Spectators.add(Spectator);
+                spectators.add(spectator);
             }
         }
         catch (IOException e) {
             throw new IllegalStateException("Impossibile trovare spettatori", e);
         }
-        return Spectators;
+        return spectators;
 
 
     }
@@ -52,7 +54,7 @@ public class SpectatorDaoCsv implements SpectatorDao {
         try (BufferedReader br = new BufferedReader(new FileReader(FILENAME))){
 
             String line;
-            br.readLine();
+
 
             while((line = br.readLine())!= null){
                 String[] data = line.split(",");
@@ -157,11 +159,15 @@ public class SpectatorDaoCsv implements SpectatorDao {
             throw new IllegalStateException("Impossibile aggiornare spettatore", e);
         }
 
-        if(input.delete() && temp.renameTo(input)){
-            return updated;
+        try {
+
+            Files.move(temp.toPath(), input.toPath(), StandardCopyOption.REPLACE_EXISTING);
+
+        } catch (IOException e) {
+            throw new IllegalStateException("Errore nel salvataggio file", e);
         }
 
-        return false;
+        return updated;
 
 
     }
@@ -210,18 +216,22 @@ public class SpectatorDaoCsv implements SpectatorDao {
             throw new IllegalStateException("Impossibile cancellare spettatore", e);
         }
 
-        if(input.delete() && temp.renameTo(input)){
-            return deleted;
+        try {
+
+            Files.move(temp.toPath(), input.toPath(), StandardCopyOption.REPLACE_EXISTING);
+
+        } catch (IOException e) {
+            throw new IllegalStateException("Errore nel salvataggio file", e);
         }
 
-        return false;
+        return deleted;
     }
 
 
     @Override
     public boolean exists(String username, String password) {
         try (BufferedReader br = new BufferedReader(new FileReader(FILENAME))) {
-            br.readLine(); // skip header
+
             String line;
             while ((line = br.readLine()) != null) {
                 String[] data = line.split(",");

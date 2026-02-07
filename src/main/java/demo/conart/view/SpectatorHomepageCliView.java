@@ -1,7 +1,6 @@
 package demo.conart.view;
 
 import demo.conart.model.entity.Artist;
-import demo.conart.model.entity.Request;
 import demo.conart.model.entity.Show;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -38,7 +37,7 @@ public class SpectatorHomepageCliView {
 
 
     public void writeReview(){
-
+        //scrivere recensione qui
     }
 
 

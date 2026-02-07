@@ -3,7 +3,9 @@ package demo.conart.model.dao.sponsor;
 import demo.conart.model.entity.Sponsor;
 
 import java.io.*;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
+import java.nio.file.Files;
 
 public class SponsorDaoCsv implements SponsorDao {
 
@@ -20,7 +22,7 @@ public class SponsorDaoCsv implements SponsorDao {
         try (BufferedReader br = new BufferedReader(new FileReader(FILENAME))) {
 
             String line;
-            br.readLine();
+
 
             while((line = br.readLine()) != null){
 
@@ -35,7 +37,7 @@ public class SponsorDaoCsv implements SponsorDao {
 
         }
         catch (IOException e) {
-            e.printStackTrace();
+            throw new IllegalStateException("Impossibile ottenere sponsors", e);
         }
         return sponsors;
 
@@ -61,7 +63,7 @@ public class SponsorDaoCsv implements SponsorDao {
         try (BufferedReader br = new BufferedReader( new FileReader(FILENAME))) {
 
             String line;
-            br.readLine();
+
 
             while((line = br.readLine()) != null){
                 String[] data = line.split(",");
@@ -76,7 +78,7 @@ public class SponsorDaoCsv implements SponsorDao {
 
         }
         catch (IOException e) {
-            e.printStackTrace();
+            throw new IllegalStateException("Impossibile ottenere sponsor", e);
         }
 
         return null;
@@ -108,10 +110,9 @@ public class SponsorDaoCsv implements SponsorDao {
         }
 
         catch (IOException e) {
-            e.printStackTrace();
+            throw new IllegalStateException("Impossibile aggiungere sponsor", e);
         }
 
-        return false;
     }
 
 
@@ -130,9 +131,9 @@ public class SponsorDaoCsv implements SponsorDao {
         boolean update = false;
 
         try (BufferedReader br = new BufferedReader(new FileReader(input));
-           BufferedWriter bw = new BufferedWriter(new FileWriter(temp))) {
+             BufferedWriter bw = new BufferedWriter(new FileWriter(temp))) {
 
-            String line = br.readLine();
+            String line = br.readLine(); // header
             bw.write(line);
             bw.newLine();
 
@@ -141,28 +142,35 @@ public class SponsorDaoCsv implements SponsorDao {
                 int id = Integer.parseInt(data[0]);
 
                 if (id == sponsor.getId()) {
-                    String updateLine = sponsor.getUsername() + "," + sponsor.getPassword();
+                    String updateLine =
+                            sponsor.getId() + ","
+                            + sponsor.getUsername() + ","
+                            + sponsor.getPassword();
+
+
                     bw.write(updateLine);
                     update = true;
-                }
-                else{
+                } else {
                     bw.write(line);
                 }
                 bw.newLine();
             }
 
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        if(input.delete() && temp.renameTo(input)){
-            return update;
+        } catch (IOException e) {
+            throw new IllegalStateException("Impossibile aggiornare sponsor", e);
         }
 
-        return false;
+        try {
 
+            Files.move(temp.toPath(), input.toPath(), StandardCopyOption.REPLACE_EXISTING);
+
+        } catch (IOException e) {
+            throw new IllegalStateException("Errore nel salvataggio file", e);
+        }
+
+        return update;
     }
+
 
 
 
@@ -206,14 +214,18 @@ public class SponsorDaoCsv implements SponsorDao {
 
         }
         catch (IOException e) {
-            e.printStackTrace();
+            throw new IllegalStateException("Impossibile cancellare sponsor", e);
         }
 
-        if(input.delete() && temp.renameTo(input)){
-            return delete;
+        try {
+
+            Files.move(temp.toPath(), input.toPath(), StandardCopyOption.REPLACE_EXISTING);
+
+        } catch (IOException e) {
+            throw new IllegalStateException("Errore nel salvataggio file", e);
         }
 
-        return false;
+        return delete;
 
     }
 
@@ -221,7 +233,7 @@ public class SponsorDaoCsv implements SponsorDao {
     @Override
     public boolean exists(String username, String password) {
         try (BufferedReader br = new BufferedReader(new FileReader(FILENAME))) {
-            br.readLine(); // skip header
+
             String line;
             while ((line = br.readLine()) != null) {
                 String[] data = line.split(",");
@@ -230,7 +242,7 @@ public class SponsorDaoCsv implements SponsorDao {
                 }
             }
         } catch (IOException e) {
-            e.printStackTrace(); // o meglio logger
+            throw new IllegalStateException("Impossibile cercare sponsor", e);
         }
         return false;
     }

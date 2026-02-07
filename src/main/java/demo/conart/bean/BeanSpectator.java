@@ -6,68 +6,68 @@ public class BeanSpectator {
         //vuoto
     }
 
-    private int id;
-    private String cf;
-    private String nome;
-    private String cognome;
-    private String email;
-    private String username;
-    private String password;
+    private int idBeanSpectator;
+    private String cfBeanSpectator;
+    private String nomeBeanSpectator;
+    private String cognomeBeanSpectator;
+    private String emailBeanSpectator;
+    private String usernameBeanSpectator;
+    private String passwordBeanSpectator;
 
 
-    public int getId() {
-        return id;
+    public int getIdBeanSpectator() {
+        return idBeanSpectator;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdBeanSpectator(int idBeanSpectator) {
+        this.idBeanSpectator = idBeanSpectator;
     }
 
-    public String getCf() {
-        return cf;
+    public String getCfBeanSpectator() {
+        return cfBeanSpectator;
     }
 
-    public void setCf(String cf) {
-        this.cf = cf;
+    public void setCfBeanSpectator(String cfBeanSpectator) {
+        this.cfBeanSpectator = cfBeanSpectator;
     }
 
-    public String getNome() {
-        return nome;
+    public String getNomeBeanSpectator() {
+        return nomeBeanSpectator;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setNomeBeanSpectator(String nomeBeanSpectator) {
+        this.nomeBeanSpectator = nomeBeanSpectator;
     }
 
-    public String getCognome() {
-        return cognome;
+    public String getCognomeBeanSpectator() {
+        return cognomeBeanSpectator;
     }
 
-    public void setCognome(String cognome) {
-        this.cognome = cognome;
+    public void setCognomeBeanSpectator(String cognomeBeanSpectator) {
+        this.cognomeBeanSpectator = cognomeBeanSpectator;
     }
 
-    public String getEmail() {
-        return email;
+    public String getEmailBeanSpectator() {
+        return emailBeanSpectator;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEmailBeanSpectator(String emailBeanSpectator) {
+        this.emailBeanSpectator = emailBeanSpectator;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUsernameBeanSpectator() {
+        return usernameBeanSpectator;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUsernameBeanSpectator(String usernameBeanSpectator) {
+        this.usernameBeanSpectator = usernameBeanSpectator;
     }
 
-    public String getPassword() {
-        return password;
+    public String getPasswordBeanSpectator() {
+        return passwordBeanSpectator;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPasswordBeanSpectator(String passwordBeanSpectator) {
+        this.passwordBeanSpectator = passwordBeanSpectator;
     }
 }

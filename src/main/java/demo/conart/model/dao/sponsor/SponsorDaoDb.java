@@ -18,7 +18,7 @@ public class SponsorDaoDb implements SponsorDao {
     @Override
     public ArrayList<Sponsor> getSponsors() {
         ArrayList<Sponsor> sponsors = new ArrayList<>();
-        String sql = "select * from sponsors";
+        String sql = "select"+" * from sponsors";
 
         try(Connection conn = DatabaseConnection.getInstance().getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
@@ -42,7 +42,7 @@ public class SponsorDaoDb implements SponsorDao {
 
     @Override
     public Sponsor getSponsor(int id) {
-        String sql = "select * from sponsors where id = ?";
+        String sql = "select"+" * from sponsors where id = ?";
 
         try(Connection conn = DatabaseConnection.getInstance().getConnection();
            PreparedStatement ps = conn.prepareStatement(sql)) {

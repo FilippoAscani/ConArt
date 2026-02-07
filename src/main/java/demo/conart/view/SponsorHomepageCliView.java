@@ -1,6 +1,5 @@
 package demo.conart.view;
 
-import demo.conart.model.entity.Artist;
 import demo.conart.model.entity.Request;
 import demo.conart.model.entity.Show;
 import demo.conart.model.entity.Sponsor;
@@ -13,7 +12,7 @@ import java.util.Scanner;
 public class SponsorHomepageCliView {
 
 
-    private static final Logger logger = LoggerFactory.getLogger(ArtistHomepageCliView.class);
+    private static final Logger logger = LoggerFactory.getLogger(SponsorHomepageCliView.class);
     private final Scanner scanner = new Scanner(System.in);
 
     public String showMenuAndGetChoice() {

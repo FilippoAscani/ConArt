@@ -17,7 +17,7 @@ public class ArtistDaoCsv implements ArtistDao {
 
         try(BufferedReader br = new BufferedReader(new FileReader(FILENAME))) {
             String line;
-            br.readLine();
+
 
             while((line = br.readLine()) != null){
 
@@ -58,7 +58,7 @@ public class ArtistDaoCsv implements ArtistDao {
 
         try (BufferedReader br = new BufferedReader(new FileReader(FILENAME))) {
             String line;
-            br.readLine();
+
 
             while((line = br.readLine()) != null){
                 String[] data = line.split(",");
@@ -91,7 +91,7 @@ public class ArtistDaoCsv implements ArtistDao {
 
         try (BufferedReader br = new BufferedReader(new FileReader(FILENAME))) {
             String line;
-            br.readLine();
+
 
             while((line = br.readLine()) != null){
                 String[] data = line.split(",");
@@ -254,7 +254,7 @@ public class ArtistDaoCsv implements ArtistDao {
     @Override
     public boolean exists(String username, String password) {
         try (BufferedReader br = new BufferedReader(new FileReader(FILENAME))) {
-            br.readLine(); // skip header
+
             String line;
             while ((line = br.readLine()) != null) {
                 String[] data = line.split(",");
