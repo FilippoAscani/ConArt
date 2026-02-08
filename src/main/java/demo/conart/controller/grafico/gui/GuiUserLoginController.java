@@ -2,6 +2,9 @@ package demo.conart.controller.grafico.gui;
 
 
 
+import demo.conart.model.dao.spectator.SpectatorDaoCsv;
+import demo.conart.model.dao.spectator.SpectatorDaoDb;
+import demo.conart.model.entity.Spectator;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -50,6 +53,9 @@ public class GuiUserLoginController implements Initializable {
 
     private static final Logger logger = LoggerFactory.getLogger(GuiUserLoginController.class);
 
+    SpectatorDaoDb spectatorDaoDb = new SpectatorDaoDb();
+    SpectatorDaoCsv spectatorDaoCsv = new SpectatorDaoCsv();
+
 
     public void select() {
         combo1U.getSelectionModel().getSelectedItem();
@@ -90,9 +96,9 @@ public class GuiUserLoginController implements Initializable {
         switch (s) {
             case "JDBC":
 
-                String query = "SELECT username, password FROM users WHERE username = ? AND password = ?";
 
-                if(CercaDB.cercaU(query, username, password)){
+
+                if(spectatorDaoDb.exists( username, password)){
                     Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("user-profile-view.fxml")));
                     Stage stage = (Stage) btnLoginU.getScene().getWindow();
                     stage.setScene(new Scene(root));
@@ -103,7 +109,7 @@ public class GuiUserLoginController implements Initializable {
                 break;
 
             case "CSV":
-                if(CercaCSV.cercaUser(username, password)){
+                if(spectatorDaoCsv.exists(username, password)){
                     Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("user-profile-view.fxml")));
                     Stage stage = (Stage) btnLoginU.getScene().getWindow();
                     stage.setScene(new Scene(root));

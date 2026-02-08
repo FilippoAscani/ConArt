@@ -37,6 +37,9 @@ public class GuiArtistRequestController implements Initializable {
     private Button btnIndietro;
 
     @FXML
+    private Button btnAccept;
+
+    @FXML
     private TableColumn<Request, String> colRequests;
 
     @FXML
@@ -44,6 +47,8 @@ public class GuiArtistRequestController implements Initializable {
 
     @FXML
     private TableView<Request> tabView;
+
+
 
 
 
@@ -68,10 +73,16 @@ public class GuiArtistRequestController implements Initializable {
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");
                 String nome = resultSet.getString("nome");
-                int capienza = resultSet.getInt("capienza");
+
                 String tipo = resultSet.getString("tipo");
 
-                richieste.add(new Request(id, nome, capienza, tipo));
+                Request request = new Request();
+                request.setId(id);
+                request.setNome(nome);
+
+                request.setTipo(tipo);
+
+                richieste.add(request);
             }
 
             // Imposta il valore di cella per la colonna nome
@@ -119,7 +130,7 @@ public class GuiArtistRequestController implements Initializable {
 
     private void declineShow(Request request) {
 
-        request.setStatus("rifiutata");
+
 
         int index = richieste.indexOf(request);
         if (index != -1) {
@@ -130,9 +141,7 @@ public class GuiArtistRequestController implements Initializable {
     }
 
     private void acceptShow(Request request) {
-        Show show = new Show(request.getId(), request.getNome(), request.getNumeroPosti(), request.getTipo());
-        Register.registraShowDB(show);
-        Register.registraShowCSV(show);
+
         request.setStatus(RequestStatus.ACCEPTED);
 
         int index = richieste.indexOf(request);

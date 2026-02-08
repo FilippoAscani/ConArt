@@ -78,7 +78,13 @@ public class ShowDaoCsv implements ShowDao {
                 String line;
                 while ((line = br.readLine()) != null) {
                     String[] colonne = line.split(",");
-                    shows.add(new Show(Integer.parseInt(colonne[0]), colonne[1], Integer.parseInt(colonne[2]), colonne[3]));
+                    Show show = new Show();
+                    show.setId(Integer.parseInt(colonne[0]));
+                    show.setTitolo(colonne[1]);
+                    show.setPostiDisponibili(Integer.parseInt(colonne[2]));
+                    show.setTipo(colonne[3]);
+                    shows.add(show);
+
 
                 }
             }
@@ -97,7 +103,7 @@ public class ShowDaoCsv implements ShowDao {
                 while ((line = br.readLine()) != null) {
                     String[] colonne = line.split(",");
                     if (Integer.parseInt(colonne[0]) == id) {
-                        return new Show(id, colonne[1], Integer.parseInt(colonne[2]), colonne[3]);
+                        return new Show();
                     }
 
                 }

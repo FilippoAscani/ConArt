@@ -82,9 +82,12 @@ public class ReviewDaoDb implements ReviewDao {
 
             while(rs.next()) {
 
-                Review review = new Review(
-                        rs.getInt("id"),
-                        rs.getString("content"));
+
+                Review review = new Review();
+                review.setId(rs.getInt("id"));
+                review.setCommento(rs.getString("content"));
+                reviews.add(review);
+
 
                 reviews.add(review);
             }
@@ -111,9 +114,13 @@ public class ReviewDaoDb implements ReviewDao {
             }
 
             if(rs.next()) {
-                return new Review
-                        (rs.getInt("id"),
-                                rs.getString("content"));
+
+                Review review = new Review();
+                review.setId(rs.getInt("id"));
+                review.setCommento(rs.getString("content"));
+
+                return review;
+
             }
         }
         catch (SQLException | DBConnectionException e) {

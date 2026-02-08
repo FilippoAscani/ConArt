@@ -1,6 +1,8 @@
 package demo.conart.controller.grafico.gui;
 
 
+import demo.conart.model.dao.sponsor.SponsorDaoCsv;
+import demo.conart.model.dao.sponsor.SponsorDaoDb;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -55,6 +57,9 @@ public class GuiSponsorLoginController implements Initializable {
         combo1S.getSelectionModel().getSelectedItem();
     }
 
+    SponsorDaoDb sponsorDaoDb = new SponsorDaoDb();
+    SponsorDaoCsv sponsorDaoCsv = new SponsorDaoCsv();
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         ObservableList<String> list = FXCollections.observableArrayList("JDBC","CSV");
@@ -83,9 +88,9 @@ public class GuiSponsorLoginController implements Initializable {
         switch (s) {
             case "JDBC":
 
-                String query = "SELECT username, password FROM sponsors WHERE username = ? AND password = ?";
 
-                if(CercaDB.cercaS(query,username, password)){
+
+                if(sponsorDaoDb.exists(username, password)){
                     Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("sponsor-profile-view.fxml")));
                     Stage stage = (Stage) btnLoginS.getScene().getWindow();
                     stage.setScene(new Scene(root));
@@ -96,7 +101,7 @@ public class GuiSponsorLoginController implements Initializable {
                 break;
 
             case "CSV":
-                if(CercaCSV.cercaSponsor(username, password)){
+                if(sponsorDaoCsv.exists(username, password)){
                     Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("sponsor-profile-view.fxml")));
                     Stage stage = (Stage) btnLoginS.getScene().getWindow();
                     stage.setScene(new Scene(root));

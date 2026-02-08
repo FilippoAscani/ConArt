@@ -2,6 +2,7 @@ package demo.conart.controller.grafico.gui;
 
 
 import demo.conart.model.entity.Show;
+import demo.conart.other.DatabaseConnection;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -98,7 +99,15 @@ public class GuiUserSearchController implements Initializable {
                 int capienza = resultSet.getInt("capienza");
                 String tipo = resultSet.getString("tipo");
 
-                spettacoliTrovati.add(new Show(id, titolo, capienza, tipo));
+                Show show = new Show();
+                show.setId(id);
+                show.setTitolo(titolo);
+                show.setPostiDisponibili(capienza);
+                show.setTipo(tipo);
+
+                spettacoliTrovati.add(show);
+
+
             }
 
             colShows.setCellValueFactory(new PropertyValueFactory<>("titolo"));

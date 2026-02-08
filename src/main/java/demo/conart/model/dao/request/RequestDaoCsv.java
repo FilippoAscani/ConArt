@@ -71,7 +71,13 @@ public class RequestDaoCsv implements RequestDao {
                 String line;
                 while ((line = br.readLine()) != null) {
                     String[] colonne = line.split(",");
-                    requests.add(new Request(Integer.parseInt(colonne[0]), colonne[1], Integer.parseInt(colonne[2]), colonne[3]));
+                    Request request = new Request();
+                    request.setId(Integer.parseInt(colonne[0]));
+                    request.setNome(colonne[1]);
+                    request.setNumeroPosti(Integer.parseInt(colonne[2]));
+                    request.setTipo(colonne[3]);
+                    requests.add(request);
+
 
                 }
             }
@@ -89,7 +95,14 @@ public class RequestDaoCsv implements RequestDao {
                 while ((line = br.readLine()) != null) {
                     String[] colonne = line.split(",");
                     if (Integer.parseInt(colonne[0]) == id) {
-                        return new Request(id, colonne[1], Integer.parseInt(colonne[2]), colonne[3]);
+                        Request request = new Request();
+                        request.setId(Integer.parseInt(colonne[0]));
+                        request.setNome(colonne[1]);
+                        request.setNumeroPosti(Integer.parseInt(colonne[2]));
+                        request.setTipo(colonne[3]);
+                        return request;
+
+
                     }
 
                 }

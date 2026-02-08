@@ -14,9 +14,6 @@ import demo.conart.view.MainView;
 
 public class AppController {
 
-    private PersistenceStrategy persistenza;
-    private LoginController loginController;
-
     public void start() {
 
         //  Scegli UI
@@ -40,18 +37,21 @@ public class AppController {
         AppConfig.getInstance().setTypesOfPersistenceLayer(persistenceLayer);
 
         //  Configura strategia persistenza
-        persistenza = (persistenceLayer == TypesOfPersistenceLayer.JDBC) ?
+        PersistenceStrategy persistenza = (persistenceLayer == TypesOfPersistenceLayer.JDBC) ?
                 new PersistenceJdbc() : new PersistenceFs();
 
         //  Scegli tipo utente
         String tipoUtente = MainView.tipoUtente();
 
         //  Crea login controller giusto
-        loginController = switch(tipoUtente.toLowerCase()) {
+        LoginController loginController = switch (tipoUtente.toLowerCase()) {
             case "spettatore" -> new SpectatorLoginController(persistenza);
             case "artista" -> new ArtistLoginController(persistenza);
             case "sponsor" -> new SponsorLoginController(persistenza);
-            default -> { MainView.notValidUser(); yield null; }
+            default -> {
+                MainView.notValidUser();
+                yield null;
+            }
         };
         if(loginController == null) return;
 

@@ -8,6 +8,10 @@ public class Review {
     private Spectator author;
     private Show show;
 
+    public Review(){
+
+    }
+
 
     public int getId() {
         return id;

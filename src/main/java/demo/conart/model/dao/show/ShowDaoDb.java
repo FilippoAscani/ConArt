@@ -86,11 +86,11 @@ public class ShowDaoDb implements ShowDao {
 
             while(rs.next()) {
 
-                Show show = new Show(
-                        rs.getInt("id"),
-                        rs.getString("titolo"),
-                        rs.getString("capienza"),
-                        rs.getString("tipo"));
+                Show show = new Show();
+                        rs.getInt("id");
+                        rs.getString("titolo");
+                        rs.getString("capienza");
+                        rs.getString("tipo");
 
                 shows.add(show);
             }
@@ -117,11 +117,12 @@ public class ShowDaoDb implements ShowDao {
             }
 
             if(rs.next()) {
-                return new Show
-                        (rs.getInt("id"),
-                                rs.getString("titolo"),
-                                rs.getInt("capienza"),
-                                rs.getString("tipo"));
+
+                        rs.getInt("id");
+                        rs.getString("titolo");
+                        rs.getInt("capienza");
+                        rs.getString("tipo");
+                        return new Show();
             }
 
 

@@ -86,11 +86,11 @@ public class RequestDaoDb implements RequestDao {
 
             while(rs.next()) {
 
-                Request request = new Request(
-                        rs.getInt("id"),
-                        rs.getString("nome"),
-                        rs.getInt("capienza"),
-                        rs.getString("tipo"));
+                Request request = new Request();
+                        rs.getInt("id");
+                        rs.getString("nome");
+                        rs.getInt("capienza");
+                        rs.getString("tipo");
 
                 requests.add(request);
             }
@@ -117,12 +117,18 @@ public class RequestDaoDb implements RequestDao {
             }
 
             if(rs.next()) {
-                return new Request
-                        (rs.getInt("id"),
-                                rs.getString("nome"),
-                                rs.getInt("capienza"),
-                                rs.getString("tipo"));
+
+                Request request = new Request();
+                rs.getInt("id");
+                rs.getString("nome");
+                rs.getString("capienza");
+                rs.getString("tipo");
+
+                return request;
+
             }
+
+
 
 
         }

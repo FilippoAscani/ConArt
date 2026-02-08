@@ -86,7 +86,11 @@ public class ReviewDaoCsv implements ReviewDao {
                 String line;
                 while ((line = br.readLine()) != null) {
                     String[] colonne = line.split(",");
-                    reviews.add(new Review(Integer.parseInt(colonne[0]), colonne[1]));
+                    Review review = new Review();
+                    review.setId(Integer.parseInt(colonne[0]));
+                    review.setCommento(colonne[1]);
+                    reviews.add(review);
+
 
                 }
             }
@@ -105,7 +109,10 @@ public class ReviewDaoCsv implements ReviewDao {
                 while ((line = br.readLine()) != null) {
                     String[] colonne = line.split(",");
                     if (Integer.parseInt(colonne[0]) == id) {
-                        return new Review(id, colonne[1]);
+                        Review review = new Review();
+                        review.setId(Integer.parseInt(colonne[0]));
+                        review.setCommento(colonne[1]);
+                        return review;
                     }
 
                 }

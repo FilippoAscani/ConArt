@@ -2,6 +2,7 @@ package demo.conart.controller.grafico.gui;
 
 
 import demo.conart.exception.DBConnectionException;
+import demo.conart.model.Register;
 import demo.conart.model.entity.Artist;
 import demo.conart.other.DatabaseConnection;
 import javafx.event.ActionEvent;
@@ -81,7 +82,7 @@ public class GuiArtistRegisterController {
         }
         else{
             Artist artist = createArtist();
-            Register.registraArtistCSV(artist);
+            Register register = new Register();
         }
     }
 
@@ -95,7 +96,7 @@ public class GuiArtistRegisterController {
         }
         else{
             Artist artist = createArtist();
-            Register.registraArtistDB(artist);
+            Register register = new Register();
         }
     }
 
@@ -108,7 +109,14 @@ public class GuiArtistRegisterController {
 
         int id = this.rand.nextInt(10000);
 
-        return new Artist(id, usename, password, tipo);
+        Artist artist = new Artist();
+        artist.setId(id);
+        artist.setUsername(usename);
+        artist.setPassword(password);
+        artist.setTipo(tipo);
+
+
+        return artist;
     }
 
 

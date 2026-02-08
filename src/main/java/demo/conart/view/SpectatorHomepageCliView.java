@@ -2,6 +2,7 @@ package demo.conart.view;
 
 import demo.conart.model.entity.Artist;
 import demo.conart.model.entity.Show;
+import demo.conart.model.entity.Spectator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,9 +23,9 @@ public class SpectatorHomepageCliView {
         return scanner.nextLine();
     }
 
-    public void showProfile(Artist artist) {
-        logger.info("ID {}", artist.getId());
-        logger.info("Username {}", artist.getUsername());
+    public void showProfile(Spectator spectator) {
+        logger.info("ID {}", spectator.getId());
+        logger.info("Username {}", spectator.getUsername());
     }
 
 

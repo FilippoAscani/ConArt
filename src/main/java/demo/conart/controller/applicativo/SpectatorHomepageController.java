@@ -16,14 +16,12 @@ public class SpectatorHomepageController {
     private final ShowDao showDAO;
     private final ReviewDao reviewDAO;
 
-    public SpectatorHomepageController(
-            SpectatorHomepageCliView view,
-            ShowDao showDAO,
-            ReviewDao reviewDAO
-    ) {
+    public SpectatorHomepageController(SpectatorHomepageCliView view, ShowDao showDAO, ReviewDao reviewDAO) {
+
         this.view = view;
         this.showDAO = showDAO;
         this.reviewDAO = reviewDAO;
+
     }
 
     // visualizza profilo
@@ -39,16 +37,18 @@ public class SpectatorHomepageController {
 
     // scrive una recensione
     public void onWriteReviewSelected(Spectator spectator, Show show, int stars, String comment) {
-        Review review = new Review(spectator, show, stars, comment);
-        reviewDAO.save(review);
-        view.showMessage("Recensione salvata con successo!");
+        Review review = new Review();
+        review.setAuthor(spectator);
+        review.setShow(show);
+        review.setStelle(stars);
+        review.setCommento(comment);
+
+        reviewDAO.addReview(review);
+        view.showError("Recensione salvata con successo!");
     }
 
     // visualizza le recensioni scritte dallo spettatore
-    public void onMyReviewsSelected(Spectator spectator) {
-        List<Review> reviews = reviewDAO.getBySpectator(spectator);
-        view.showReviews(reviews);
-    }
+
 
     // esci
     public void onExitSelected() {
