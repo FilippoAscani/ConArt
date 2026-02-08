@@ -68,9 +68,9 @@ public class StarsController {
     public void handleUser() {
 
         try {
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("user-login-view.fxml")));
-            Stage stage = (Stage) btnUser.getScene().getWindow();
-            stage.setScene(new Scene(root));
+            Parent rootSuno = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("user-login-view.fxml")));
+            Stage stageSuno = (Stage) btnUser.getScene().getWindow();
+            stageSuno.setScene(new Scene(rootSuno));
 
 
         } catch (IOException e) {
@@ -82,9 +82,9 @@ public class StarsController {
     public void handleArtist() {
 
         try {
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("artist-login-view.fxml")));
-            Stage stage = (Stage) btnArtist.getScene().getWindow();
-            stage.setScene(new Scene(root));
+            Parent rootSdue = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("artist-login-view.fxml")));
+            Stage stageSdue = (Stage) btnArtist.getScene().getWindow();
+            stageSdue.setScene(new Scene(rootSdue));
 
 
         } catch (IOException e) {
@@ -95,9 +95,9 @@ public class StarsController {
 
     public void handleSponsor() {
         try {
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("sponsor-login-view.fxml")));
-            Stage stage = (Stage) btnSponsor.getScene().getWindow();
-            stage.setScene(new Scene(root));
+            Parent rootStre = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("sponsor-login-view.fxml")));
+            Stage stageStre = (Stage) btnSponsor.getScene().getWindow();
+            stageStre.setScene(new Scene(rootStre));
 
 
         } catch (IOException e) {
