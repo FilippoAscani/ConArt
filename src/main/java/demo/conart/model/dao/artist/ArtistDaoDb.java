@@ -22,13 +22,13 @@ public class ArtistDaoDb implements ArtistDao{
 
         try(Connection conn = DatabaseConnection.getInstance().getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery()){
+            ResultSet rsUno = ps.executeQuery()){
 
 
-            while(rs.next()){
+            while(rsUno.next()){
                 Artist artist = new Artist();
-                artist.setUsername(rs.getString(USERNAME));
-                artist.setPassword(rs.getString(PASSWORD));
+                artist.setUsername(rsUno.getString(USERNAME));
+                artist.setPassword(rsUno.getString(PASSWORD));
 
                 artists.add(artist);
             }
@@ -48,12 +48,12 @@ public class ArtistDaoDb implements ArtistDao{
            PreparedStatement ps = conn.prepareStatement(sql)) {
 
             ps.setInt(1, id);
-            ResultSet rs = ps.executeQuery();
+            ResultSet rsDue = ps.executeQuery();
 
-            if(rs.next()){
+            if(rsDue.next()){
                 Artist artist = new Artist();
-                artist.setUsername(rs.getString(USERNAME));
-                artist.setPassword(rs.getString(PASSWORD));
+                artist.setUsername(rsDue.getString(USERNAME));
+                artist.setPassword(rsDue.getString(PASSWORD));
 
                 return artist;
             }
@@ -84,12 +84,12 @@ public class ArtistDaoDb implements ArtistDao{
             PreparedStatement ps = conn.prepareStatement(sql)) {
 
             ps.setString(1, username);
-            ResultSet rs = ps.executeQuery();
+            ResultSet rsTre = ps.executeQuery();
 
-            if(rs.next()){
+            if(rsTre.next()){
                 Artist artist = new Artist();
-                artist.setUsername(rs.getString(USERNAME));
-                artist.setPassword(rs.getString(PASSWORD));
+                artist.setUsername(rsTre.getString(USERNAME));
+                artist.setPassword(rsTre.getString(PASSWORD));
 
                 return artist;
             }

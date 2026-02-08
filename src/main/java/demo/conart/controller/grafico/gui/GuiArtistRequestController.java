@@ -4,7 +4,6 @@ package demo.conart.controller.grafico.gui;
 
 import demo.conart.enums.RequestStatus;
 import demo.conart.model.entity.Request;
-import demo.conart.model.entity.Show;
 import demo.conart.other.DatabaseConnection;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -36,8 +35,6 @@ public class GuiArtistRequestController implements Initializable {
     @FXML
     private Button btnIndietro;
 
-    @FXML
-    private Button btnAccept;
 
     @FXML
     private TableColumn<Request, String> colRequests;

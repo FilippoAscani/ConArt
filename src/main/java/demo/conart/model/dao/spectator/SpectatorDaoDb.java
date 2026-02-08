@@ -57,12 +57,12 @@ public class SpectatorDaoDb implements SpectatorDao {
             PreparedStatement ps = conn.prepareStatement(sql)) {
 
             ps.setInt(1, id);
-            ResultSet rs = ps.executeQuery();
+            ResultSet rsSpeUno = ps.executeQuery();
 
-            if (rs.next()){
+            if (rsSpeUno.next()){
                 Spectator spectator = new Spectator();
-                spectator.setEmail(rs.getString("email"));
-                spectator.setUsername(rs.getString("username"));
+                spectator.setEmail(rsSpeUno.getString("email"));
+                spectator.setUsername(rsSpeUno.getString("username"));
                 return spectator;
             }
 

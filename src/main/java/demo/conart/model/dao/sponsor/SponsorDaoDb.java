@@ -22,13 +22,13 @@ public class SponsorDaoDb implements SponsorDao {
 
         try(Connection conn = DatabaseConnection.getInstance().getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery()){
+            ResultSet rsSpoUno = ps.executeQuery()){
 
 
-            while(rs.next()){
+            while(rsSpoUno.next()){
                 Sponsor sponsor = new Sponsor();
-                sponsor.setUsername(rs.getString("username"));
-                sponsor.setPassword(rs.getString("password"));
+                sponsor.setUsername(rsSpoUno.getString("username"));
+                sponsor.setPassword(rsSpoUno.getString("password"));
 
                 sponsors.add(sponsor);
             }
@@ -48,12 +48,12 @@ public class SponsorDaoDb implements SponsorDao {
            PreparedStatement ps = conn.prepareStatement(sql)) {
 
             ps.setInt(1, id);
-            ResultSet rs = ps.executeQuery();
+            ResultSet rsSpoDue = ps.executeQuery();
 
-            if(rs.next()){
+            if(rsSpoDue.next()){
                 Sponsor sponsor = new Sponsor();
-                sponsor.setUsername(rs.getString("username"));
-                sponsor.setPassword(rs.getString("password"));
+                sponsor.setUsername(rsSpoDue.getString("username"));
+                sponsor.setPassword(rsSpoDue.getString("password"));
                 return sponsor;
             }
 

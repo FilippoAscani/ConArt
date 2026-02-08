@@ -9,7 +9,7 @@ public class Review {
     private Show show;
 
     public Review(){
-
+        //vuoto
     }
 
 

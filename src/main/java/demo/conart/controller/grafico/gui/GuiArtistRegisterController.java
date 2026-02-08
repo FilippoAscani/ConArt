@@ -2,8 +2,8 @@ package demo.conart.controller.grafico.gui;
 
 
 import demo.conart.exception.DBConnectionException;
-import demo.conart.model.Register;
-import demo.conart.model.entity.Artist;
+
+
 import demo.conart.other.DatabaseConnection;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -21,7 +21,7 @@ import org.slf4j.LoggerFactory;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.security.SecureRandom;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -62,7 +62,6 @@ public class GuiArtistRegisterController {
     private TextField usernameFieldA;
 
     private static final Logger logger = LoggerFactory.getLogger(GuiArtistRegisterController.class);
-    private final SecureRandom rand = new SecureRandom();
 
     @FXML
     void handleIndietro(ActionEvent event) {
@@ -79,10 +78,7 @@ public class GuiArtistRegisterController {
     void handleRegisterCSV(ActionEvent event) {
         if(cercaCSV()){
             logger.info("utente csv trovato");
-        }
-        else{
-            Artist artist = createArtist();
-            Register register = new Register();
+
         }
     }
 
@@ -94,30 +90,11 @@ public class GuiArtistRegisterController {
         if(cercaDB()){
             logger.info("utente db trovato");
         }
-        else{
-            Artist artist = createArtist();
-            Register register = new Register();
-        }
+
     }
 
 
 
-    private Artist createArtist() {
-        String usename = usernameFieldA.getText();
-        String password = passwordFieldA.getText();
-        String tipo = tipoFieldA.getText();
-
-        int id = this.rand.nextInt(10000);
-
-        Artist artist = new Artist();
-        artist.setId(id);
-        artist.setUsername(usename);
-        artist.setPassword(password);
-        artist.setTipo(tipo);
-
-
-        return artist;
-    }
 
 
 

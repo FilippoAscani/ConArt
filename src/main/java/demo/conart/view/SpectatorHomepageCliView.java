@@ -1,6 +1,5 @@
 package demo.conart.view;
 
-import demo.conart.model.entity.Artist;
 import demo.conart.model.entity.Show;
 import demo.conart.model.entity.Spectator;
 import org.slf4j.Logger;
