@@ -181,10 +181,10 @@ public class ArtistDaoDb implements ArtistDao{
         String sql = "delete from artist where id = ?";
 
         try (Connection conn = DatabaseConnection.getInstance().getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
+             PreparedStatement psAuno = conn.prepareStatement(sql)) {
 
-            ps.setInt(1, id);
-            ps.executeUpdate();
+            psAuno.setInt(1, id);
+            psAuno.executeUpdate();
 
             return true;
 
@@ -201,12 +201,12 @@ public class ArtistDaoDb implements ArtistDao{
     public boolean exists(String username, String password) {
         String sql =  "SELECT 1 FROM Spectators WHERE username = ? AND password = ?";
         try (Connection conn = DatabaseConnection.getInstance().getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
+             PreparedStatement psAdue = conn.prepareStatement(sql)) {
 
-            ps.setString(1, username);
-            ps.setString(2, password);
+            psAdue.setString(1, username);
+            psAdue.setString(2, password);
 
-            try (ResultSet rs = ps.executeQuery()) {
+            try (ResultSet rs = psAdue.executeQuery()) {
                 return rs.next();
             }
 
@@ -215,12 +215,5 @@ public class ArtistDaoDb implements ArtistDao{
 
         }
     }
-
-
-
-
-
-
-
 
 }

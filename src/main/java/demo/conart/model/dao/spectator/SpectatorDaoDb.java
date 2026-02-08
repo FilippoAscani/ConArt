@@ -141,10 +141,10 @@ public class SpectatorDaoDb implements SpectatorDao {
         String sql = "delete from Spectators where id = ?";
 
         try(Connection conn = DatabaseConnection.getInstance().getConnection();
-            PreparedStatement ps = conn.prepareStatement(sql)) {
+            PreparedStatement psSpeUno = conn.prepareStatement(sql)) {
 
-            ps.setInt(1, id);
-            ps.executeUpdate();
+            psSpeUno.setInt(1, id);
+            psSpeUno.executeUpdate();
 
             return true;
         }
@@ -160,12 +160,12 @@ public class SpectatorDaoDb implements SpectatorDao {
     public boolean exists(String username, String password) {
         String sql =  "SELECT 1 FROM Spectators WHERE username = ? AND password = ?";
         try (Connection conn = DatabaseConnection.getInstance().getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
+             PreparedStatement psSpeDue = conn.prepareStatement(sql)) {
 
-            ps.setString(1, username);
-            ps.setString(2, password);
+            psSpeDue.setString(1, username);
+            psSpeDue.setString(2, password);
 
-            try (ResultSet rs = ps.executeQuery()) {
+            try (ResultSet rs = psSpeDue.executeQuery()) {
                 return rs.next();
             }
 

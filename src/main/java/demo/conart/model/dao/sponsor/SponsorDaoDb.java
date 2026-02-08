@@ -144,10 +144,10 @@ public class SponsorDaoDb implements SponsorDao {
         String sql = "delete from sponsors where id = ?";
 
         try (Connection conn = DatabaseConnection.getInstance().getConnection();
-           PreparedStatement ps = conn.prepareStatement(sql)) {
+           PreparedStatement psSpoUno = conn.prepareStatement(sql)) {
 
-            ps.setInt(1, id);
-            ps.executeUpdate();
+            psSpoUno.setInt(1, id);
+            psSpoUno.executeUpdate();
 
             return true;
         }
@@ -163,12 +163,12 @@ public class SponsorDaoDb implements SponsorDao {
     public boolean exists(String username, String password) {
         String sql =  "SELECT 1 FROM Spectators WHERE username = ? AND password = ?";
         try (Connection conn = DatabaseConnection.getInstance().getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
+             PreparedStatement psSpoDue = conn.prepareStatement(sql)) {
 
-            ps.setString(1, username);
-            ps.setString(2, password);
+            psSpoDue.setString(1, username);
+            psSpoDue.setString(2, password);
 
-            try (ResultSet rs = ps.executeQuery()) {
+            try (ResultSet rs = psSpoDue.executeQuery()) {
                 return rs.next();
             }
 
