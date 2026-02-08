@@ -18,6 +18,8 @@ public class ReviewCliView {
         logger.info("1 commenta");
         logger.info("2 aggiungi stelle");
         logger.info("3 invia recensione");
+
+        return sc.nextLine();
     }
 
     public String commenta(){

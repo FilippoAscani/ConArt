@@ -5,7 +5,7 @@ import demo.conart.enums.TypesOfUis;
 
 public class AppConfig {
 
-    private static AppConfig instance;
+    private static AppConfig instance = null;
 
     private TypesOfUis typesOfUis;
     private TypesOfPersistenceLayer typesOfPerLas;
@@ -14,7 +14,7 @@ public class AppConfig {
 
     }
 
-    public static AppConfig getInstance() {
+    public static synchronized AppConfig getInstance() {
         if (instance == null) {
             instance = new AppConfig();
         }
