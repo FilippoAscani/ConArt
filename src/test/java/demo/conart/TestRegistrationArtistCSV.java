@@ -16,7 +16,7 @@ class TestRegistrationArtistCSV {
 
     @Test
     void testRegistrationArtistCSV() throws IOException {
-        int id = random.nextInt(10000); // Generazione di un ID casuale per l'artista
+
         Artist artist = new Artist();
 
         Register register = new Register();
