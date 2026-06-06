@@ -29,7 +29,9 @@ public class CliArtistHomepageController {
                 case "4" -> controller.onExitSelected();
                 default -> view.showError("Scelta non valida");
             }
+            break;
         }
+
     }
 }
 
