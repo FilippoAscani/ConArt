@@ -4,7 +4,6 @@ package demo.conart.controller.grafico.gui;
 
 import demo.conart.model.dao.spectator.SpectatorDaoCsv;
 import demo.conart.model.dao.spectator.SpectatorDaoDb;
-import demo.conart.model.entity.Spectator;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
